@@ -21,21 +21,36 @@ class UsersSeed extends AbstractSeed
     public function run()
     {
         $datetime = date('Y-m-d H:i:s');
-
-        $faker = Faker\Factory::create('ja_JP');
-
-        for ($i = 0; $i < 20; $i++) {
-            $data[] = [
-                'username' => $faker->name,
+        $data = [
+            [
+                'username' => 'test01',
+                'email' => 'test01@test.com',
                 'password' => $this->_setPassword(123456),
-                'role' => $faker->numberBetween($min = 2, $max = 4),
+                'role' => 'admin',
                 'created' => $datetime,
-                'modified' => $datetime
-            ];
+                'modified' => $datetime,
+            ],
+            [
+                'username' => 'test02',
+                'email' => 'test02@test.com',
+                'password' => $this->_setPassword(123456),
+                'role' => 'user',
+                'created' => $datetime,
+                'modified' => $datetime,
+            ],
+            [
+                'username' => 'test03',
+                'email' => 'test03@test.com',
+                'password' => $this->_setPassword(123456),
+                'role' => 'user',
+                'created' => $datetime,
+                'modified' => $datetime,
+            ],
 
-            $table = $this->table('users');
-            $table->insert($data)->save();
-        }
+        ];
+
+        $table = $this->table('users');
+        $table->insert($data)->save();
     }
 
     /**
