@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Customer[]|\Cake\Collection\CollectionInterface $customers
@@ -16,8 +17,8 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('first_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('last_name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('first_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('telephone_number') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('mailaddress') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -26,11 +27,11 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($customers as $customer): ?>
+            <?php foreach ($customers as $customer) : ?>
             <tr>
                 <td><?= $this->Number->format($customer->id) ?></td>
-                <td><?= h($customer->first_name) ?></td>
                 <td><?= h($customer->last_name) ?></td>
+                <td><?= h($customer->first_name) ?></td>
                 <td><?= h($customer->telephone_number) ?></td>
                 <td><?= h($customer->mailaddress) ?></td>
                 <td><?= h($customer->created) ?></td>
