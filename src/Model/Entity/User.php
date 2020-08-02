@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string|null $username
+ * @property string|null $email
  * @property string|null $password
  * @property string|null $role
  * @property \Cake\I18n\FrozenTime|null $created
@@ -28,6 +29,7 @@ class User extends Entity
      */
     protected $_accessible = [
         'username' => true,
+        'email' => true,
         'password' => true,
         'role' => true,
         'created' => true,
@@ -43,13 +45,10 @@ class User extends Entity
         'password',
     ];
 
-    protected function _setPassword($value)
+    protected function _setPassword($password)
     {
-        $hasher = new DefaultPasswordHasher();
-        return $hasher->hash($value);
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher)->hash($password);
+        }
     }
-    /* protected function _setPassword($value)
-    {
-        return (new DefaultPasswordHasher)->has($value);
-    } */
 }

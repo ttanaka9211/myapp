@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -55,21 +54,21 @@ class UsersTable extends Table
         $validator
             ->scalar('username')
             ->maxLength('username', 50)
-            ->notEmptyString('username', 'A username is required');
+            ->allowEmptyString('username');
+
+        $validator
+            ->email('email')
+            ->allowEmptyString('email');
 
         $validator
             ->scalar('password')
             ->maxLength('password', 255)
-            ->notEmptyString('password', 'A password is required');
+            ->allowEmptyString('password');
 
         $validator
             ->scalar('role')
             ->maxLength('role', 20)
-            ->notEmptyString('role', 'A role is required')
-            ->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'user']],
-                'message' => 'Please enter a valid role'
-            ]);
+            ->allowEmptyString('role');
 
         return $validator;
     }
@@ -84,6 +83,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->isUnique(['email']));
 
         return $rules;
     }
