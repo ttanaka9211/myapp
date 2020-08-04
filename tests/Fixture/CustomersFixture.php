@@ -45,8 +45,8 @@ class CustomersFixture extends TestFixture
                 'last_name' => 'Lorem ipsum dolor ',
                 'telephone_number' => 'Lorem ipsum dolor ',
                 'mailaddress' => 'Lorem ipsum dolor sit amet',
-                'created' => '2020-08-01 12:53:08',
-                'modified' => '2020-08-01 12:53:08',
+                'created' => '2020-08-04 11:59:50',
+                'modified' => '2020-08-04 11:59:50',
             ],
         ];
         parent::init();
