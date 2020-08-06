@@ -16,12 +16,12 @@ class UsersController extends AppController
 {
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['add', 'logout']);
+        $this->Auth->allow(['index', 'logout']);
     }
 
     public function isAuthorized($user)
     {
-        return false;
+        return true;
     }
 
     public function login()
