@@ -58,6 +58,24 @@ return [
             'cacheMetadata' => true,
             'log' => false,
         ],
+        'test' => [
+            'className' => Connection::class,
+            'driver' => 'Cake\Database\Driver\Postgres',
+            'persistent' => false,
+            'host' => $db['host'],
+            'port' => ‘5’432,
+            'username' => $db['user'],
+            'password' => $db[‘pass’],
+            'database' => substr($db['path'], 2),
+
+            'encoding' => 'utf8mb4',
+            'timezone' => 'Asia/Tokyo',
+            'cacheMetadata' => true,
+            'quoteIdentifiers' => false,
+            'log' => false,
+            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+            'url' => env('DATABASE_TEST_URL', null),
+        ],
     ],
     /*
      * Email configuration.
