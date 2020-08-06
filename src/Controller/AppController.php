@@ -47,18 +47,18 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
-        $this->loadComponent('Auth', [
-            'authorize' => ['Controller'],
-            'authenticate'   => ['Form' => ['fields' => ['username' => 'email', 'password' => 'password']]],
-            'loginRedirect' => [
-                'controller' => 'Users',
-                'action' => 'index'
-            ],
-            'logoutRedirect' => [
-                'controller' => 'Users',
-                'action' => 'login'
-            ]
-        ]);
+        // $this->loadComponent('Auth', [
+        //     'authorize' => ['Controller'],
+        //     'authenticate'   => ['Form' => ['fields' => ['username' => 'email', 'password' => 'password']]],
+        //     'loginRedirect' => [
+        //         'controller' => 'Users',
+        //         'action' => 'index'
+        //     ],
+        //     'logoutRedirect' => [
+        //         'controller' => 'Users',
+        //         'action' => 'login'
+        //     ]
+        // ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
@@ -67,12 +67,12 @@ class AppController extends Controller
         //$this->loadComponent('Security');
     }
 
-    public function isAuthorized($user)
-    {
-        if (isset($user['role']) && $user['role'] === 'admin') {
-            return true;
-        }
+    //public function isAuthorized($user)
+    //{
+    //    if (isset($user['role']) && $user['role'] === 'admin') {
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 }
