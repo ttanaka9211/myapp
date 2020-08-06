@@ -14,15 +14,15 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
-    // public function beforeFilter(Event $event)
-    // {
-    //     $this->Auth->allow(['add', 'logout']);
-    // }
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['add', 'logout']);
+    }
 
-    // public function isAuthorized($user)
-    // {
-    //     return true;
-    // }
+    public function isAuthorized($user)
+    {
+        return true;
+    }
 
     public function login()
     {
