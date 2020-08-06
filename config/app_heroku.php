@@ -5,7 +5,8 @@
  * Note: It is not recommended to commit files with credentials such as app_local.php
  * into source code version control.
  */
-$db = parse_url(env('CLEARDB_DATABASE_URL'));
+$db = parse_url(env('DATABASE_URL'));
+
 return [
     /*
      * Debug Level:
@@ -38,16 +39,19 @@ return [
     'Datasources' => [
         'default' => [
             'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
-            'persistent' => false,
+            'driver' => 'Cake\Database\Driver\Postgres',
+            'persistent' => 'false',
             'host' => $db['host'],
+            'port' => '5432',
             'username' => $db['user'],
             'password' => $db['pass'],
             'database' => substr($db['path'], 1),
+            'schema' => 'public',
+            'prefix' => '',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
-            'quoteIdentifiers' => false,
+            'log' => false,
         ],
     ],
     /*
