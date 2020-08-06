@@ -21,7 +21,7 @@ class UsersController extends AppController
 
     public function isAuthorized($user)
     {
-        return true;
+        return false;
     }
 
     public function login()
