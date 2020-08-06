@@ -5,7 +5,7 @@
  * Note: It is not recommended to commit files with credentials such as app_local.php
  * into source code version control.
  */
-$url = parse_url(get('DATABASE_URL'));
+$db = parse_url(env('DATABASE_URL'));
 
 return [
     /*
@@ -42,11 +42,6 @@ return [
             'driver' => 'Cake\Database\Driver\Postgres',
             'persistent' => 'false',
             'host' => $db['host'],
-            /*
-             * CakePHP will use the default DB port based on the driver selected
-             * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
-             * the following line and set the port accordingly
-             */
             'port' => '5432',
             'username' => $db['user'],
             'password' => $db['pass'],
@@ -54,7 +49,7 @@ return [
             'schema' => 'public',
             'prefix' => '',
             'encoding' => 'utf8',
-            'timezone' => 'Asia/Tokyo',
+            'timezone' => 'UTC',
             'cacheMetadata' => true,
             'log' => false,
         ],
