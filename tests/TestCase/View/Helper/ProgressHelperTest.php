@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\ProgressHelper;
@@ -15,7 +16,7 @@ class ProgressHelperTest extends TestCase
      *
      * @var \App\View\Helper\ProgressHelper
      */
-    public $Progress;
+    public $ProgressHelper;
 
     /**
      * setUp method
@@ -26,7 +27,7 @@ class ProgressHelperTest extends TestCase
     {
         parent::setUp();
         $view = new View();
-        $this->Progress = new ProgressHelper($view);
+        $this->ProgressHelper = new ProgressHelper($view);
     }
 
     /**
@@ -36,17 +37,17 @@ class ProgressHelperTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Progress);
+        unset($this->ProgressHelper);
 
         parent::tearDown();
     }
 
     /**
-     * Test bar method
+     * Test initial setup
      *
      * @return void
      */
-    public function testBar()
+    public function testInitialization()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
