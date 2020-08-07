@@ -24,6 +24,46 @@ class UsersControllerTest extends TestCase
     ];
 
     /**
+     * Test beforeFilter method
+     *
+     * @return void
+     */
+    public function testBeforeFilter()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test isAuthorized method
+     *
+     * @return void
+     */
+    public function testIsAuthorized()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test login method
+     *
+     * @return void
+     */
+    public function testLogin()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test logout method
+     *
+     * @return void
+     */
+    public function testLogout()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test index method
      *
      * @return void
