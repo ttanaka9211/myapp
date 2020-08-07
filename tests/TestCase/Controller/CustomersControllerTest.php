@@ -24,6 +24,26 @@ class CustomersControllerTest extends TestCase
     ];
 
     /**
+     * Test beforeFilter method
+     *
+     * @return void
+     */
+    public function testBeforeFilter()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test isAuthorized method
+     *
+     * @return void
+     */
+    public function testIsAuthorized()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test index method
      *
      * @return void
@@ -49,26 +69,6 @@ class CustomersControllerTest extends TestCase
      * @return void
      */
     public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
