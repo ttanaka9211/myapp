@@ -18,6 +18,7 @@ class SalesController extends AppController
     {
         parent::beforeFilter($event);
     }
+
     public function isAuthorized($user)
     {
         return true;
