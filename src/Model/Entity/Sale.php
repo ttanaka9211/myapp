@@ -9,8 +9,10 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $customer_id
  * @property string $customer_name
- * @property int $products_id
- * @property string $products_name
+ * @property int $product_id
+ * @property string $product_name
+ * @property int $product_price
+ * @property int $quantity
  * @property \Cake\I18n\FrozenTime $order_date_at
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -32,8 +34,10 @@ class Sale extends Entity
     protected $_accessible = [
         'customer_id' => true,
         'customer_name' => true,
-        'products_id' => true,
-        'products_name' => true,
+        'product_id' => true,
+        'product_name' => true,
+        'product_price' => true,
+        'quantity' => true,
         'order_date_at' => true,
         'created' => true,
         'modified' => true,

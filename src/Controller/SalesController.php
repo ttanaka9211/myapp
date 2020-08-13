@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Event\Event;
 
 /**
  * Sales Controller
@@ -14,15 +12,6 @@ use Cake\Event\Event;
  */
 class SalesController extends AppController
 {
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-    }
-
-    public function isAuthorized($user)
-    {
-        return true;
-    }
     /**
      * Index method
      *

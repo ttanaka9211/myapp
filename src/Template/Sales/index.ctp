@@ -22,8 +22,10 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('customer_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('customer_name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('products_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('products_name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('product_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('product_name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('product_price') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('quantity') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('order_date_at') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
@@ -37,7 +39,9 @@
                 <td><?= $sale->has('customer') ? $this->Html->link($sale->customer->id, ['controller' => 'Customers', 'action' => 'view', $sale->customer->id]) : '' ?></td>
                 <td><?= h($sale->customer_name) ?></td>
                 <td><?= $sale->has('product') ? $this->Html->link($sale->product->name, ['controller' => 'Products', 'action' => 'view', $sale->product->id]) : '' ?></td>
-                <td><?= h($sale->products_name) ?></td>
+                <td><?= h($sale->product_name) ?></td>
+                <td><?= $this->Number->format($sale->product_price) ?></td>
+                <td><?= $this->Number->format($sale->quantity) ?></td>
                 <td><?= h($sale->order_date_at) ?></td>
                 <td><?= h($sale->created) ?></td>
                 <td><?= h($sale->modified) ?></td>

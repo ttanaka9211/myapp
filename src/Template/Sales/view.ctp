@@ -33,12 +33,20 @@
             <td><?= $sale->has('product') ? $this->Html->link($sale->product->name, ['controller' => 'Products', 'action' => 'view', $sale->product->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Products Name') ?></th>
-            <td><?= h($sale->products_name) ?></td>
+            <th scope="row"><?= __('Product Name') ?></th>
+            <td><?= h($sale->product_name) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($sale->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Product Price') ?></th>
+            <td><?= $this->Number->format($sale->product_price) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Quantity') ?></th>
+            <td><?= $this->Number->format($sale->quantity) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Order Date At') ?></th>

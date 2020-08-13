@@ -24,12 +24,12 @@ class CreateSales extends AbstractMigration
             'limit' => 50,
             'null' => false,
         ]);
-        $table->addColumn('products_id', 'integer', [
+        $table->addColumn('product_id', 'integer', [
             'default' => null,
             'limit' => 11,
             'null' => false,
         ]);
-        $table->addColumn('products_name', 'string', [
+        $table->addColumn('product_name', 'string', [
             'default' => null,
             'limit' => 50,
             'null' => false,
@@ -46,6 +46,16 @@ class CreateSales extends AbstractMigration
             'default' => null,
             'null' => false,
         ]);
+        $table->addIndex(
+            [
+                'customer_id',
+            ]
+        );
+        $table->addIndex(
+            [
+                'product_id'
+            ]
+        );
         $table->create();
     }
 }

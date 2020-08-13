@@ -46,7 +46,7 @@ class SalesTable extends Table
             'joinType' => 'INNER',
         ]);
         $this->belongsTo('Products', [
-            'foreignKey' => 'products_id',
+            'foreignKey' => 'product_id',
             'joinType' => 'INNER',
         ]);
     }
@@ -70,10 +70,20 @@ class SalesTable extends Table
             ->notEmptyString('customer_name');
 
         $validator
-            ->scalar('products_name')
-            ->maxLength('products_name', 50)
-            ->requirePresence('products_name', 'create')
-            ->notEmptyString('products_name');
+            ->scalar('product_name')
+            ->maxLength('product_name', 50)
+            ->requirePresence('product_name', 'create')
+            ->notEmptyString('product_name');
+
+        $validator
+            ->integer('product_price')
+            ->requirePresence('product_price', 'create')
+            ->notEmptyString('product_price');
+
+        $validator
+            ->integer('quantity')
+            ->requirePresence('quantity', 'create')
+            ->notEmptyString('quantity');
 
         $validator
             ->dateTime('order_date_at')
@@ -93,7 +103,7 @@ class SalesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['customer_id'], 'Customers'));
-        $rules->add($rules->existsIn(['products_id'], 'Products'));
+        $rules->add($rules->existsIn(['product_id'], 'Products'));
 
         return $rules;
     }
