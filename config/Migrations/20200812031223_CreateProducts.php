@@ -14,12 +14,12 @@ class CreateProducts extends AbstractMigration
     public function change()
     {
         $table = $this->table('products');
-        $table->addColumn('product_name', 'string', [
+        $table->addColumn('name', 'string', [
             'default' => null,
             'limit' => 255,
             'null' => false,
         ]);
-        $table->addColumn('unit_price', 'integer', [
+        $table->addColumn('price', 'integer', [
             'default' => null,
             'limit' => 3,
             'null' => false,

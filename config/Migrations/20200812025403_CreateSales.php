@@ -1,4 +1,5 @@
 <?php
+
 use Migrations\AbstractMigration;
 
 class CreateSales extends AbstractMigration
@@ -18,9 +19,19 @@ class CreateSales extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ]);
+        $table->addColumn('customer_name', 'string', [
+            'default' => null,
+            'limit' => 50,
+            'null' => false,
+        ]);
         $table->addColumn('products_id', 'integer', [
             'default' => null,
             'limit' => 11,
+            'null' => false,
+        ]);
+        $table->addColumn('products_name', 'string', [
+            'default' => null,
+            'limit' => 50,
             'null' => false,
         ]);
         $table->addColumn('order_date_at', 'datetime', [

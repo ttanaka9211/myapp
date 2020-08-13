@@ -121,4 +121,14 @@ class SalesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function find()
+    {
+        $sale=[];
+        if ($this->request->isPost()){
+            $requestData=$this->request->getData();
+            $conditions=[];
+            if(!empty($requestData['']))
+        }
+    }
 }
