@@ -25,8 +25,16 @@
             <td><?= $sale->has('customer') ? $this->Html->link($sale->customer->id, ['controller' => 'Customers', 'action' => 'view', $sale->customer->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Customer Name') ?></th>
+            <td><?= h($sale->customer_name) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Product') ?></th>
-            <td><?= $sale->has('product') ? $this->Html->link($sale->product->id, ['controller' => 'Products', 'action' => 'view', $sale->product->id]) : '' ?></td>
+            <td><?= $sale->has('product') ? $this->Html->link($sale->product->name, ['controller' => 'Products', 'action' => 'view', $sale->product->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Products Name') ?></th>
+            <td><?= h($sale->products_name) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>

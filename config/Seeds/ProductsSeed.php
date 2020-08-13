@@ -22,26 +22,26 @@ class ProductsSeed extends AbstractSeed
         $datetime = date('Y-m-d H:i:s');
         $data = [
             [
-                'product_name' => 'A',
-                'unit_price' => '2800',
+                'name' => 'A',
+                'price' => '2800',
                 'created' => $datetime,
                 'modified' => $datetime
             ],
             [
-                'product_name' => 'B',
-                'unit_price' => '4800',
+                'name' => 'B',
+                'price' => '4800',
                 'created' => $datetime,
                 'modified' => $datetime
             ],
             [
-                'product_name' => 'C',
-                'unit_price' => '1080',
+                'name' => 'C',
+                'price' => '1080',
                 'created' => $datetime,
                 'modified' => $datetime
             ],
             [
-                'product_name' => 'D',
-                'unit_price' => '6800',
+                'name' => 'D',
+                'price' => '6800',
                 'created' => $datetime,
                 'modified' => $datetime
             ],

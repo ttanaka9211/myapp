@@ -4,21 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Sale Entity
+ * Product Entity
  *
  * @property int $id
- * @property int $customer_id
- * @property string $customer_name
- * @property int $products_id
- * @property string $products_name
- * @property \Cake\I18n\FrozenTime $order_date_at
+ * @property string $name
+ * @property int $price
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
- *
- * @property \App\Model\Entity\Customer $customer
- * @property \App\Model\Entity\Product $product
  */
-class Sale extends Entity
+class Product extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -30,14 +24,9 @@ class Sale extends Entity
      * @var array
      */
     protected $_accessible = [
-        'customer_id' => true,
-        'customer_name' => true,
-        'products_id' => true,
-        'products_name' => true,
-        'order_date_at' => true,
+        'name' => true,
+        'price' => true,
         'created' => true,
         'modified' => true,
-        'customer' => true,
-        'product' => true,
     ];
 }

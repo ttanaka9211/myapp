@@ -64,6 +64,18 @@ class SalesTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
+            ->scalar('customer_name')
+            ->maxLength('customer_name', 50)
+            ->requirePresence('customer_name', 'create')
+            ->notEmptyString('customer_name');
+
+        $validator
+            ->scalar('products_name')
+            ->maxLength('products_name', 50)
+            ->requirePresence('products_name', 'create')
+            ->notEmptyString('products_name');
+
+        $validator
             ->dateTime('order_date_at')
             ->requirePresence('order_date_at', 'create')
             ->notEmptyDateTime('order_date_at');
