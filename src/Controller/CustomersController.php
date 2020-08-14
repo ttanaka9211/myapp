@@ -71,6 +71,22 @@ class CustomersController extends AppController
         $this->set(compact('customer'));
     }
 
+    public function find()
+    {
+        $customers = [];
+        if ($this->request->isPost()) {
+            $requestData = $this->request->getData();
+
+            $conditions = [];
+            if (!empty($requestData['telephone_number'])) {
+                $conditions['telephone_number'] = $requestData['telephone_number'];
+            }
+            $customers = $this->Customers->find()
+                ->where($conditions);
+            $this->set('msg', "電話番号で検索出来ます（あいまい検索も可能）");
+            $this->set('customers', $customers);
+        }
+    }
     /**
      * Edit method
      *
