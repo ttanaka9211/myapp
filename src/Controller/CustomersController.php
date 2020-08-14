@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Entity\Customer;
 use Cake\Event\Event;
 
 /**
@@ -76,16 +77,34 @@ class CustomersController extends AppController
         $customers = [];
         if ($this->request->isPost()) {
             $requestData = $this->request->getData();
-
+            $this->log($requestData);
             $conditions = [];
+            if (!empty($requestData['first_name like'])) {
+                $conditions['first_name like'] = $requestData['first_name'] . '%';
+            }
+            if (!empty($requestData['last_name'])) {
+                $conditions['last_name like'] = $requestData['last_name'] . '%';
+            }
             if (!empty($requestData['telephone_number'])) {
-                $conditions['telephone_number'] = $requestData['telephone_number'];
+                $conditions['telephone_number like'] = $requestData['telephone_number'] . '%';
             }
             $customers = $this->Customers->find()
                 ->where($conditions);
+            $this->log($conditions);
+            $this->log($customers);
             $this->set('msg', "電話番号で検索出来ます（あいまい検索も可能）");
             $this->set('customers', $customers);
         }
+    }
+
+    public function order($id = null)
+    {
+        $customer = $this->Customers->get($id, [
+            'contain' => [],
+        ]);
+
+        $this->set('customer', $customer);
+        return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
     }
     /**
      * Edit method
