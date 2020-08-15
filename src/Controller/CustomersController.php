@@ -77,7 +77,6 @@ class CustomersController extends AppController
         $customers = [];
         if ($this->request->isPost()) {
             $requestData = $this->request->getData();
-            $this->log($requestData);
             $conditions = [];
             if (!empty($requestData['first_name like'])) {
                 $conditions['first_name like'] = $requestData['first_name'] . '%';
@@ -90,8 +89,6 @@ class CustomersController extends AppController
             }
             $customers = $this->Customers->find()
                 ->where($conditions);
-            $this->log($conditions);
-            $this->log($customers);
             $this->set('msg', "電話番号で検索出来ます（あいまい検索も可能）");
             $this->set('customers', $customers);
         }
@@ -104,7 +101,23 @@ class CustomersController extends AppController
         ]);
 
         $this->set('customer', $customer);
-        return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
+    }
+
+    public function test($id = null)
+    {
+        $customer = $this->Sales->newEntity();
+        if ($this->request->isPost()) {
+            $customer = $this->Sales->patchEntity($customer, $this->request->getData());
+            if ($this->Sales->save($customer)) {
+                $this->Flash->success(__('The customer has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The customer could not be saved. Please, try again.'));
+        }
+        $this->set(compact('customer'));
+
+        //return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
     }
     /**
      * Edit method

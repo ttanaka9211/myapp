@@ -30,7 +30,7 @@
                 <td><?= h($customer->last_name) ?></td>
                 <td><?= h($customer->first_name) ?></td>
                 <td><?= h($customer->telephone_number) ?></td>
-                <td><?= $this->Html->Link(__('Order'), ['controller' => 'Sales', 'action' => 'add', $customer->id]) ?></td>
+                <td><?= $this->Html->Link(__('Order'), ['action' => 'order', $customer->id]) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
