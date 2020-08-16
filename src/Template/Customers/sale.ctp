@@ -18,12 +18,9 @@
         <?php
         echo $this->Form->control('customer_id', ['type' => 'hidden', 'value' => $client->id]);
         echo $this->Form->control('customer_name', ['value' => ($client->last_name . $client->first_name)]);
-        echo $this->Form->control(
-            'product_name',
-            ['type' => 'select', 'empty' => '選択して下さい', 'options' => $productsVaild]
-        );
-        //echo $this->Form->control('products.product_name');
-        //echo $this->Form->control('products.product_price');
+        echo $this->Form->control('product_id');
+        echo $this->Form->control('product_name');
+        echo $this->Form->control('product_price');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

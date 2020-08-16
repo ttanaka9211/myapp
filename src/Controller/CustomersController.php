@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use App\Model\Entity\Customer;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Customers Controller
@@ -15,15 +16,29 @@ use Cake\Event\Event;
  */
 class CustomersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Products = TableRegistry::getTableLocator()->get('products');
+    }
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        $productsAll = $productsVaild = array();
+        foreach ($this->Products->find()->all() as $tmp) {
+            $productsAll += array($tmp->id => $tmp->name);
+            if ($tmp->delete_flag != '1') {
+                $productsVaild += array($tmp->id => $tmp->name);
+            }
+        }
+        $this->set(compact('productsAll', 'productsVaild'));
     }
 
     public function isAuthorized($user)
     {
         return true;
     }
+
     /**
      * Index method
      *
@@ -96,15 +111,13 @@ class CustomersController extends AppController
 
     public function order($id = null)
     {
-        $customer = $this->Customers->get($id, [
+        $client = $this->Customers->get($id, [
             'contain' => [],
         ]);
+        $this->set('client', $client);
 
-        $this->set('customer', $customer);
-    }
+        $this->loadModel('Sales');
 
-    public function test($id = null)
-    {
         $customer = $this->Sales->newEntity();
         if ($this->request->isPost()) {
             $customer = $this->Sales->patchEntity($customer, $this->request->getData());
@@ -116,9 +129,33 @@ class CustomersController extends AppController
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $this->set(compact('customer'));
-
-        //return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
+        log($customer);
+        //return $this->redirect(['action' => 'sale']);
     }
+    // public function sale()
+    // {
+    //     log($client);
+    //     // $client = $this->Customers->get($id, [
+    //     //     'contain' => [],
+    //     // ]);
+    //     // $this->set('client', $client);
+    //     $this->loadModel('Sales');
+
+    //     $customer = $this->Sales->newEntity();
+    //     if ($this->request->isPost()) {
+    //         $customer = $this->Sales->patchEntity($customer, $this->request->getData());
+    //         if ($this->Sales->save($customer)) {
+    //             $this->Flash->success(__('The customer has been saved.'));
+
+    //             return $this->redirect(['action' => 'index']);
+    //         }
+    //         $this->Flash->error(__('The customer could not be saved. Please, try again.'));
+    //     }
+    //     $this->set(compact('customer', 'client'));
+
+    //     //return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
+    // }
+
     /**
      * Edit method
      *

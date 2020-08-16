@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Sales Controller
@@ -110,5 +111,26 @@ class SalesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function sale($id = null)
+    {
+        $this->loadModel('Customers');
+        $client = $this->Customers->get($id, [
+            'contain' => [],
+        ]);
+
+        $customer = $this->Sales->newEntity();
+        if ($this->request->isPost()) {
+            $customer = $this->Sales->patchEntity($customer, $this->request->getData());
+            if ($this->Sales->save($customer)) {
+                $this->Flash->success(__('The customer has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The customer could not be saved. Please, try again.'));
+        }
+        $this->set(compact('customer', 'client'));
+
+        //return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
     }
 }
