@@ -111,15 +111,25 @@ class CustomersController extends AppController
 
     public function order($id = null)
     {
+        //顧客情報
         $client = $this->Customers->get($id, [
             'contain' => [],
         ]);
         $this->set('client', $client);
 
+        //商品情報
+        $productId = $this->request->getData('product_id');
+        $this->loadModel('Product');
+        $product = $this->Products->get($productId, [
+            'contain' => [],
+        ]);
+        $this->set('product', $product);
+        //$this->log($product);
+
         //保存
         $this->loadModel('Sales');
         $sale = $this->Sales->newEntity($this->request->getData());
-        $this->log($sale);
+
         if ($this->request->isPost()) {
             $sale = $this->Sales->patchEntity($sale, $this->request->getData());
             if ($this->Sales->save($sale)) {
@@ -129,8 +139,8 @@ class CustomersController extends AppController
             }
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
-        debug($sale);
         $this->set(compact('sale'));
+        $this->log($sale);
         //$this->log($client);
         //return $this->redirect(['controller' => 'Sales', 'action' => 'sale', $id]);
     }

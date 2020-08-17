@@ -22,8 +22,8 @@
             'product_id',
             ['type' => 'select', 'empty' => '選択して下さい', 'options' => $productsVaild]
         );
-        //echo $this->Form->control('products.product_name');
-        //echo $this->Form->control('products.product_price');
+        echo $this->Form->control('product_name', ['type' => 'hidden', 'value' => $product->name]);
+        echo $this->Form->control('product_price', ['value' => $product->price]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
