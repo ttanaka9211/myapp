@@ -116,21 +116,23 @@ class CustomersController extends AppController
         ]);
         $this->set('client', $client);
 
+        //保存
         $this->loadModel('Sales');
-
-        $customer = $this->Sales->newEntity();
+        $sale = $this->Sales->newEntity($this->request->getData());
+        $this->log($sale);
         if ($this->request->isPost()) {
-            $customer = $this->Sales->patchEntity($customer, $this->request->getData());
-            if ($this->Sales->save($customer)) {
+            $sale = $this->Sales->patchEntity($sale, $this->request->getData());
+            if ($this->Sales->save($sale)) {
                 $this->Flash->success(__('The customer has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
-        $this->set(compact('customer'));
-        log($customer);
-        //return $this->redirect(['action' => 'sale']);
+        debug($sale);
+        $this->set(compact('sale'));
+        //$this->log($client);
+        //return $this->redirect(['controller' => 'Sales', 'action' => 'sale', $id]);
     }
     // public function sale()
     // {

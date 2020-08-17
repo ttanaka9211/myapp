@@ -114,22 +114,26 @@ class SalesController extends AppController
     }
     public function sale($id = null)
     {
+        //顧客情報取得
         $this->loadModel('Customers');
         $client = $this->Customers->get($id, [
             'contain' => [],
         ]);
+        $this->log('$client=[' . $client . ']');
 
-        $customer = $this->Sales->newEntity();
+        //保存
+        $sale = $this->Sales->newEntity();
+        debug($sale);
         if ($this->request->isPost()) {
-            $customer = $this->Sales->patchEntity($customer, $this->request->getData());
-            if ($this->Sales->save($customer)) {
+            $sale = $this->Sales->patchEntity($sale, $this->request->getData());
+            if ($this->Sales->save($sale)) {
                 $this->Flash->success(__('The customer has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
-        $this->set(compact('customer', 'client'));
+        $this->set(compact('sale', 'client'));
 
         //return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
     }

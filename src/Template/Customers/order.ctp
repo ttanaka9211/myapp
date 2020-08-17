@@ -19,7 +19,7 @@
         echo $this->Form->control('customer_id', ['type' => 'hidden', 'value' => $client->id]);
         echo $this->Form->control('customer_name', ['value' => ($client->last_name . $client->first_name)]);
         echo $this->Form->control(
-            'product_name',
+            'product_id',
             ['type' => 'select', 'empty' => '選択して下さい', 'options' => $productsVaild]
         );
         //echo $this->Form->control('products.product_name');
