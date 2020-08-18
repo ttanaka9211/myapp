@@ -22,7 +22,7 @@
         echo $this->Form->control('product_name', ['value' => $sale->product_name]);
         echo $this->Form->control('product_price', ['value' => $sale->product_price]);
         echo $this->Form->control(
-            'visit_date',
+            'order_date_at',
             [
                 'label' => '受注日',
                 'type' => 'date',

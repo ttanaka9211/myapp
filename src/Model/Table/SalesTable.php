@@ -82,7 +82,7 @@ class SalesTable extends Table
             ->notEmptyString('product_price');
 
         $validator
-            ->dateTime('order_date_at')
+            ->date('order_date_at')
             ->allowEmptyDateTime('order_date_at');
 
         return $validator;

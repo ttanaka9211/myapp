@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\ORM\TableRegistry;
+use Cake\Log\Log;
 
 /**
  * Sales Controller
@@ -120,6 +120,7 @@ class SalesController extends AppController
 
         //保存
         $sale = $this->request->getData();
+        Log::write('debug', $sale);
         $sale = $this->Sales->newEntity();
         //debug($sale);
         if ($this->request->isPost()) {
