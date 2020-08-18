@@ -82,13 +82,7 @@ class SalesTable extends Table
             ->notEmptyString('product_price');
 
         $validator
-            ->integer('quantity')
-            ->requirePresence('quantity', 'create')
-            ->allowEmptyString('quantity');
-
-        $validator
             ->dateTime('order_date_at')
-            ->requirePresence('order_date_at', 'create')
             ->allowEmptyDateTime('order_date_at');
 
         return $validator;
