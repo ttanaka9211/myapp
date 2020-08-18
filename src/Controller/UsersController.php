@@ -139,9 +139,9 @@ class UsersController extends AppController
         $users = $this->Users->find('all');
         //$this->log($users);
 
-        //$file = '/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv';
-        $file = new File('/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv', true);
-        $this->log($file);
+        $file = '/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv';
+        //$file = new File('/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv', true);
+        //$this->log($file);
         $f = fopen($file, 'w');
         if ($f) {
             $header = array('id', 'username', 'email', 'password', 'role', 'created', 'modified');
