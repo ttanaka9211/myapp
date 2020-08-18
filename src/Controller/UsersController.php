@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Filesystem\File;
 
 /**
  * Users Controller
@@ -131,5 +132,40 @@ class UsersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function export()
+    {
+        $users = $this->Users->find('all');
+        //$this->log($users);
+
+        //$file = '/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv';
+        $file = new File('/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv', true);
+        $this->log($file);
+        $f = fopen($file, 'w');
+        if ($f) {
+            $header = array('id', 'username', 'email', 'password', 'role', 'created', 'modified');
+            fputcsv($f, $header);
+
+            foreach ($users as $user) {
+                $data = array(
+                    $user[0],
+                    $user[1],
+                    $user[2],
+                    $user[3],
+                    $user[4],
+                    $user[5],
+                    $user[6],
+                    $user[7]
+                );
+
+                fputcsv($f, $data);
+            }
+            fclose($f);
+            $this->Flash->success(__('CSV outputted.'));
+        } else {
+            $this->Flash->error(__('CSV output failure'));
+        }
+        //return $this->redirect(['action' => 'index']);
     }
 }
