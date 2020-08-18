@@ -12,15 +12,15 @@
     </ul>
 </nav>
 <div class="customers form large-9 medium-8 columns content">
-    <?= $this->Form->create($sale, array('url' => array('action' => 'sale'))) ?>
+    <?= $this->Form->create($product, array('url' => array('controller' => 'Sales', 'action' => 'sale'))) ?>
     <fieldset>
         <legend><?= __('Add Customer') ?></legend>
         <?php
-        echo $this->Form->control('customer_id', ['type' => 'hidden', 'value' => $sale->customer_id]);
-        echo $this->Form->control('customer_name', ['value' => $sale->customer_name]);
-        echo $this->Form->text('product_id', ['value' => $sale->product_id]);
-        echo $this->Form->control('product_name', ['value' => $sale->product_name]);
-        echo $this->Form->control('product_price', ['value' => $sale->product_price]);
+        echo $this->Form->control('customer_id', ['type' => 'hidden', 'value' => $client->customer_id]);
+        echo $this->Form->control('customer_name', ['value' => $client->customer_name]);
+        echo $this->Form->text('product_id', ['value' => $product->id]);
+        echo $this->Form->control('product_name', ['value' => $product->name]);
+        echo $this->Form->control('product_price', ['value' => $product->price]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

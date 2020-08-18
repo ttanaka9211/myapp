@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -102,5 +103,20 @@ class ProductsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function product()
+    {
+        $client = $this->request->getData();
+        //商品情報
+        $productId = $this->request->getData('product_id');
+        $product = $this->Products->get($productId, [
+            'contain' => [],
+        ]);
+        $this->set('product', $product);
+        $this->set('client', $client);
+        // $this->log($productId);
+        // $this->log($client);
+        // $this->log($product);
     }
 }
