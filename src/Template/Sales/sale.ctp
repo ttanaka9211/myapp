@@ -21,6 +21,18 @@
         echo $this->Form->text('product_id', ['value' => $sale->product_id]);
         echo $this->Form->control('product_name', ['value' => $sale->product_name]);
         echo $this->Form->control('product_price', ['value' => $sale->product_price]);
+        echo $this->Form->control(
+            'visit_date',
+            [
+                'label' => '受注日',
+                'type' => 'date',
+                'dateFormat' => 'YMD',
+                'monthNames' => false,
+                'maxYear' => date('Y'),
+                'minYear' => date('Y') - 10,
+                'empty' => '---'
+            ]
+        );
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

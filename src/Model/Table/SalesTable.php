@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -83,12 +84,12 @@ class SalesTable extends Table
         $validator
             ->integer('quantity')
             ->requirePresence('quantity', 'create')
-            ->notEmptyString('quantity');
+            ->allowEmptyString('quantity');
 
         $validator
             ->dateTime('order_date_at')
             ->requirePresence('order_date_at', 'create')
-            ->notEmptyDateTime('order_date_at');
+            ->allowEmptyDateTime('order_date_at');
 
         return $validator;
     }
