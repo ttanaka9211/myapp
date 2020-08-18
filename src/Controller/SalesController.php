@@ -119,6 +119,7 @@ class SalesController extends AppController
         $this->set(compact('sale'));
 
         //保存
+        $sale = $this->request->getData();
         $sale = $this->Sales->newEntity();
         //debug($sale);
         if ($this->request->isPost()) {
@@ -128,6 +129,7 @@ class SalesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
+            $this->log($sale);
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $this->set(compact('sale'));

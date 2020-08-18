@@ -18,7 +18,7 @@
         <?php
         echo $this->Form->control('customer_id', ['type' => 'hidden', 'value' => $sale->customer_id]);
         echo $this->Form->control('customer_name', ['value' => $sale->customer_name]);
-        echo $this->Form->text('product_id', ['value' => $sale->product_id]);
+        echo $this->Form->control('product_id', ['type' => 'text', 'value' => $sale->product_id]);
         echo $this->Form->control('product_name', ['value' => $sale->product_name]);
         echo $this->Form->control('product_price', ['value' => $sale->product_price]);
         echo $this->Form->control(
