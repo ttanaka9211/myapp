@@ -39,6 +39,9 @@ class CustomersController extends AppController
         return true;
     }
 
+    public $paginate = [
+        'limit' => 10
+    ];
     /**
      * Index method
      *
@@ -46,6 +49,7 @@ class CustomersController extends AppController
      */
     public function index()
     {
+        $customers = $this->Customers->find('all');
         $customers = $this->paginate($this->Customers);
 
         $this->set(compact('customers'));
@@ -89,7 +93,6 @@ class CustomersController extends AppController
 
     public function find()
     {
-        $customers = [];
         if ($this->request->isPost()) {
             $requestData = $this->request->getData();
             $conditions = [];
@@ -102,9 +105,9 @@ class CustomersController extends AppController
             if (!empty($requestData['telephone_number'])) {
                 $conditions['telephone_number like'] = $requestData['telephone_number'] . '%';
             }
-            $customers = $this->Customers->find()
+            $client = $this->Customers->find()
                 ->where($conditions);
-            $this->set('msg', "電話番号で検索出来ます（あいまい検索も可能）");
+            $customers = $this->paginate($client);
             $this->set('customers', $customers);
         }
     }
@@ -116,58 +119,57 @@ class CustomersController extends AppController
             'contain' => [],
         ]);
         $this->set('client', $client);
-        //商品情報
-        // $productId = $this->request->getData('product_id');
-        // $this->loadModel('Products');
-        // $product = $this->Products->get($productId, [
-        //     'contain' => [],
-        // ]);
-        // $this->set('product', $product);
-        // //$this->log($product);
-
-        //保存
-        //  $this->loadModel('Sales');
-        //  $sale = $this->Sales->newEntity($this->request->getData());
-        //  $this->log($sale);
-
-        //  if ($this->request->isPost()) {
-        //      $sale = $this->Sales->patchEntity($sale, $this->request->getData());
-        //      if ($this->Sales->save($sale)) {
-        //          $this->Flash->success(__('The customer has been saved.'));
-
-        //          return $this->redirect(['action' => 'index']);
-        //      }
-        //      $this->Flash->error(__('The customer could not be saved. Please, try again.'));
-        //  }
-        //  $this->set(compact('sale'));
-        //$this->log($sale);
-        //$this->log($client);
-        //return $this->redirect(['controller' => 'Sales', 'action' => 'sale', $id]);
     }
-    // public function sale()
-    // {
-    //     log($client);
-    //     // $client = $this->Customers->get($id, [
-    //     //     'contain' => [],
-    //     // ]);
-    //     // $this->set('client', $client);
-    //     $this->loadModel('Sales');
 
-    //     $customer = $this->Sales->newEntity();
-    //     if ($this->request->isPost()) {
-    //         $customer = $this->Sales->patchEntity($customer, $this->request->getData());
-    //         if ($this->Sales->save($customer)) {
-    //             $this->Flash->success(__('The customer has been saved.'));
+    public function export()
+    {
 
-    //             return $this->redirect(['action' => 'index']);
-    //         }
-    //         $this->Flash->error(__('The customer could not be saved. Please, try again.'));
-    //     }
-    //     $this->set(compact('customer', 'client'));
+        // 出力する値の設定
+        $sales = array(
+            array(1, "ラザニア", 500), array(2, "生姜焼き", 450), array(3, "かつおのお刺身", 350)
+        );
 
-    //     //return $this->redirect(['controller' => 'Sales', 'action' => 'add']);
-    // }
+        // 保存場所とファイルの設定
+        $file = '/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv';
 
+        // ファイルを書き込み用で開く
+        $f = fopen($file, 'w');
+
+        // 正常にファイルを開けていれば書き込む
+        if ($f) {
+
+            // ヘッダーの出力
+            $header = array("NO.", "商品名", "値段");
+            fputcsv($f, $header);
+
+            // データの出力
+            foreach ($sales as $sale) {
+
+                // 出力するデータを整形
+                $data = array(
+                    $sale[0]    // NO.
+                    , $sale[1]  // 商品名
+                    , $sale[2]  // 値段
+                );
+
+                // ファイルに書き込み
+                fputcsv($f, $data);
+            }
+
+            // ファイルを閉じる
+            fclose($f);
+
+            // 成功メッセージ
+            $this->Flash->success(__('CSV outputted.'));
+        } else {
+
+            // 失敗メッセージ
+            $this->Flash->error(__('CSV output failure.'));
+        }
+
+        // 検索結果画面に遷移
+        return $this->redirect(['action' => 'search']);
+    }
     /**
      * Edit method
      *
