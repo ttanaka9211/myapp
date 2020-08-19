@@ -44,6 +44,9 @@ class CustomersTable extends Table
             ->like('last_name', [
                 'before' => true,
                 'after' => true
+            ])
+            ->like('telephone_number', [
+                'after' => true
             ]);
     }
 
