@@ -136,36 +136,33 @@ class UsersController extends AppController
 
     public function export()
     {
-        $users = $this->Users->find('all');
-        //$this->log($users);
+        $header = array("出席番号", "名前", "身長");
+        $datas = array(
+            array(1, "山田太郎", 167), array(2, "鈴木花子", 158), array(3, "高橋健太", 174)
+        );
 
-        //$file = '/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv';
-        $file = new File('/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv', true);
-        $this->log($file);
-        $f = fopen($file, 'w');
-        if ($f) {
-            $header = array('id', 'username', 'email', 'password', 'role', 'created', 'modified');
-            fputcsv($f, $header);
+        $temp_dir = sys_get_temp_dir();
+        //$this->log($temp_dir, 'debug');
+        $temp_csv_file_path = tempnam($temp_dir, 'temp_csv');
+        //$this->log($temp_csv_file_path);
+        $fp = fopen($temp_csv_file_path, 'w');
+        fputcsv($fp, $header);
 
-            foreach ($users as $user) {
-                $data = array(
-                    $user[0],
-                    $user[1],
-                    $user[2],
-                    $user[3],
-                    $user[4],
-                    $user[5],
-                    $user[6],
-                    $user[7]
-                );
-
-                fputcsv($f, $data);
-            }
-            fclose($f);
-            $this->Flash->success(__('CSV outputted.'));
-        } else {
-            $this->Flash->error(__('CSV output failure'));
+        foreach ($datas as $data) {
+            $row = array(
+                $data[0], $data[2], $data[3], $data[4]
+            );
+            fputcsv($fp, $data);
         }
-        //return $this->redirect(['action' => 'index']);
+        fclose($fp);
+        $this->log($fp, 'debug');
+        $this->response = $this->response->withType('csv');
+        return $this->response->withFile(
+            $temp_csv_file_path,
+            [
+                'download' => true,
+                'name' => 'hoge.csv'
+            ]
+        );
     }
 }
