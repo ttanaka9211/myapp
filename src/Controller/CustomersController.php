@@ -105,12 +105,27 @@ class CustomersController extends AppController
             if (!empty($requestData['telephone_number'])) {
                 $conditions['telephone_number like'] = $requestData['telephone_number'] . '%';
             }
-            $client = $this->Customers->find()
+            $clients = $this->Customers->find()
                 ->where($conditions);
-            $this->log($client, 'debug');
-            $customers = $this->paginate($client);
+            $this->log($clients, 'debug');
+            $customers = $this->paginate($clients);
             $this->set('customers', $customers);
         }
+        $base_dir = TMP . 'csv' . DS;
+        if (!file_exists($base_dir)) {
+            mkdir($base_dir, 0777, true);
+        }
+
+        $fp = fopen("{$base_dir}.csv", 'w');
+        foreach ($clients as $client) {
+            $output_data = $client->toArray();
+            if ($client === 0) {
+                // 取得したデータのキーからヘッダーを作成する
+                fputcsv($fp, array_keys($output_data));
+            }
+            fputcsv($fp, $output_data, ",", '"');
+        }
+        fclose($fp);
     }
 
     public function order($id = null)
@@ -122,60 +137,7 @@ class CustomersController extends AppController
         $this->set('client', $client);
     }
 
-    public function export()
-    {
 
-        // 出力する値の設定
-        $sales = array(
-            array(1, "ラザニア", 500), array(2, "生姜焼き", 450), array(3, "かつおのお刺身", 350)
-        );
-
-        // 保存場所とファイルの設定
-        $file = '/var/www/html/csv' . date('YmdHis') . '.csv';
-
-        // ファイルを書き込み用で開く
-        $f = fopen($file, 'w');
-
-        if ($f === FALSE) {
-            //エラー
-            throw new Exception('Error: Failed to open file (' . filename . ')');
-        }
-
-        // 正常にファイルを開けていれば書き込む
-        if ($f) {
-
-            // ヘッダーの出力
-            $header = array("NO.", "商品名", "値段");
-            fputcsv($f, $header);
-
-            // データの出力
-            foreach ($sales as $sale) {
-
-                // 出力するデータを整形
-                $data = array(
-                    $sale[0]    // NO.
-                    , $sale[1]  // 商品名
-                    , $sale[2]  // 値段
-                );
-
-                // ファイルに書き込み
-                fputcsv($f, $data);
-            }
-
-            // ファイルを閉じる
-            fclose($f);
-
-            // 成功メッセージ
-            $this->Flash->success(__('CSV outputted.'));
-        } else {
-
-            // 失敗メッセージ
-            $this->Flash->error(__('CSV output failure.'));
-        }
-
-        // 検索結果画面に遷移
-        return $this->redirect(['action' => 'find']);
-    }
     /**
      * Edit method
      *
