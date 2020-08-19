@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Filesystem\File;
+use Cake\Log\Log;
 
 /**
  * Users Controller
