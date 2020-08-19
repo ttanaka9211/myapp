@@ -127,12 +127,12 @@ class SalesController extends AppController
             $sale = $this->Sales->patchEntity($sale, $this->request->getData());
             if ($this->Sales->save($sale)) {
 
-                //$this->Flash->success(__('The customer has been saved.'));
+                $this->Flash->success(__('The customer has been saved.'));
 
-                //return $this->redirect(['action' => 'index']);
-            } else {
-                $this->log(print_r($sale->getErrors(), true), LOG_DEBUG);
-            }
+                return $this->redirect(['action' => 'index']);
+            } //else {
+            //$this->log(print_r($sale->getErrors(), true), LOG_DEBUG);
+            //}
             //$this->log($sale);
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
