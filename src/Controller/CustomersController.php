@@ -14,6 +14,19 @@ use Cake\Event\Event;
  */
 class CustomersController extends AppController
 {
+    public $paginate = [
+        'limit' => 10
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+        //検索するアクションを設定
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index']
+        ]);
+    }
+
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -23,6 +36,7 @@ class CustomersController extends AppController
     {
         return true;
     }
+
     /**
      * Index method
      *
@@ -30,7 +44,8 @@ class CustomersController extends AppController
      */
     public function index()
     {
-        $customers = $this->paginate($this->Customers);
+        $query = $this->Customers->find('search', ['search' => $this->request->getQuery()]);
+        $customers = $this->paginate($query);
 
         $this->set(compact('customers'));
     }
