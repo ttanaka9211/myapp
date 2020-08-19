@@ -4,8 +4,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
-use Cake\Filesystem\File;
 use Cake\Log\Log;
+use Cake\ORM\TableRegistry;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Users Controller
@@ -165,5 +166,37 @@ class UsersController extends AppController
                 'name' => 'hoge.csv'
             ]
         );
+    }
+    public function outputCsv()
+    {
+        // CSVの出力先（tmp/csv）を作成する
+        $base_dir = TMP . 'csv' . DS;
+        if (!file_exists($base_dir)) {
+            mkdir($base_dir, 0777, true);
+        }
+
+        // CSV出力をするテーブルのリストを取得する
+        $tables = ConnectionManager::get('default')->getSchemaCollection()
+            ->listTables();
+        while (($index = array_search("phinxlog", $tables, true)) !== false) {
+            // phinxlogはCSVに出力しない
+            unset($tables[$index]);
+        }
+
+        // テーブルのリスト分データを取得し、CSVファイルに出力する
+        foreach ($tables as $table) {
+            $data = TableRegistry::get($table)->find()
+                ->toArray();
+            $fp = fopen("{$base_dir}{$table}.csv", 'w');
+            foreach ($data as $key => $row) {
+                $output_data = $row->toArray();
+                if ($key === 0) {
+                    // 取得したデータのキーからヘッダーを作成する
+                    fputcsv($fp, array_keys($output_data));
+                }
+                fputcsv($fp, $output_data, ",", '"');
+            }
+            fclose($fp);
+        }
     }
 }
