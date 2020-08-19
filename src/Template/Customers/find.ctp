@@ -12,6 +12,9 @@
     </fieldset>
     <div class="customers index large-9 medium-8 columns content">
         <h3><?= __('Customers') ?></h3>
+        <a href="<?= $this->Url->build('/customers/export') ?>" class="btn btn-success">
+            <span class="glyphicon glyphicon-download" aria-hidden="true">CSV出力</span>
+        </a>
         <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>

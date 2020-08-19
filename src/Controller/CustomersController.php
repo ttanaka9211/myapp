@@ -130,10 +130,15 @@ class CustomersController extends AppController
         );
 
         // 保存場所とファイルの設定
-        $file = '/var/www/html/myapp/webroot/csv/' . date('YmdHis') . '.csv';
+        $file = '/var/www/html/csv' . date('YmdHis') . '.csv';
 
         // ファイルを書き込み用で開く
         $f = fopen($file, 'w');
+
+        if ($f === FALSE) {
+            //エラー
+            throw new Exception('Error: Failed to open file (' . filename . ')');
+        }
 
         // 正常にファイルを開けていれば書き込む
         if ($f) {
@@ -168,7 +173,7 @@ class CustomersController extends AppController
         }
 
         // 検索結果画面に遷移
-        return $this->redirect(['action' => 'search']);
+        return $this->redirect(['action' => 'find']);
     }
     /**
      * Edit method
