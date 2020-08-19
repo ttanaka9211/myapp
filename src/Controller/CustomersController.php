@@ -116,7 +116,7 @@ class CustomersController extends AppController
             mkdir($base_dir, 0777, true);
         }
 
-        $fp = fopen("{$base_dir}.csv", 'w');
+        $fp = fopen("{$base_dir}date('YmdHis').csv", 'w');
         foreach ($clients as $client) {
             $output_data = $client->toArray();
             if ($client === 0) {
