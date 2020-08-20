@@ -25,6 +25,7 @@ class SalesController extends AppController
         $this->paginate = [
             'contain' => ['Customers', 'Products'],
         ];
+        $sales = $this->paginate($this->Sales);
         $this->set(compact('sales'));
     }
 
