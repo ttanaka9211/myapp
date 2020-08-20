@@ -116,28 +116,27 @@ class CustomersController extends AppController
         if (!file_exists($base_dir)) {
             mkdir($base_dir, 0777, true);
         }
+        $data = TableRegistry::getTableLocator()->get('Customers')->find()
+            ->toArray();
 
         $fp = fopen("{$base_dir}date('YmdHis').csv", 'w');
 
-        //カラム名取得
-        // $columns = TableRegistry::getTableLocator()->get('Customers');
-        //$this->log($columns, 'debug');
-        //foreach ($columns as $column) {
-        //    $this->log($column, 'debug');
-        //}
-
-        //$this->log($fp, 'debug');
-        foreach ($clients as $client) {
-            $output_data = $client->toArray();
+        foreach ($data as $key => $row) {
+            $output_data = $row->toArray();
             //$this->log($output_data, 'debug');
-            if ($client === 0) {
+            if ($key === 0) {
                 // 取得したデータのキーからヘッダーを作成する
                 fputcsv($fp, array_keys($output_data));
             }
+        }
+
+        foreach ($clients as $client) {
+            $output_data = $client->toArray();
             fputcsv($fp, $output_data, ",", '"');
         }
         fclose($fp);
     }
+
 
     public function order($id = null)
     {

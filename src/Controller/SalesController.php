@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Log\Log;
+use Cake\ORM\TableRegistry;
 
 /**
  * Sales Controller
@@ -24,8 +25,6 @@ class SalesController extends AppController
         $this->paginate = [
             'contain' => ['Customers', 'Products'],
         ];
-        $sales = $this->paginate($this->Sales);
-
         $this->set(compact('sales'));
     }
 

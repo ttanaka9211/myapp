@@ -363,7 +363,7 @@ return [
             'className' => 'Cake\Log\Engine\FileLog',
             'path' => LOGS,
             'file' => 'original',
-            'levels' => [],
+            'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
             'scopes' => ['original'],
             'url' => env('LOG_ERROR_URL', null),
         ],
