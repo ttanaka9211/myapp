@@ -118,10 +118,18 @@ class CustomersController extends AppController
         }
 
         $fp = fopen("{$base_dir}date('YmdHis').csv", 'w');
+
+        //カラム名取得
+        // $columns = TableRegistry::getTableLocator()->get('Customers');
+        //$this->log($columns, 'debug');
+        //foreach ($columns as $column) {
+        //    $this->log($column, 'debug');
+        //}
+
         //$this->log($fp, 'debug');
         foreach ($clients as $client) {
             $output_data = $client->toArray();
-            $this->log($output_data, 'debug');
+            //$this->log($output_data, 'debug');
             if ($client === 0) {
                 // 取得したデータのキーからヘッダーを作成する
                 fputcsv($fp, array_keys($output_data));
