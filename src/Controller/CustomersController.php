@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Entity\Customer;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Customers Controller
@@ -14,15 +16,32 @@ use Cake\Event\Event;
  */
 class CustomersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Products = TableRegistry::getTableLocator()->get('products');
+    }
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        $productsAll = $productsVaild = array();
+        foreach ($this->Products->find()->all() as $tmp) {
+            $productsAll += array($tmp->id => $tmp->name);
+            if ($tmp->delete_flag != '1') {
+                $productsVaild += array($tmp->id => $tmp->name);
+            }
+        }
+        $this->set(compact('productsAll', 'productsVaild'));
     }
 
     public function isAuthorized($user)
     {
         return true;
     }
+
+    public $paginate = [
+        'limit' => 10
+    ];
     /**
      * Index method
      *
@@ -30,6 +49,7 @@ class CustomersController extends AppController
      */
     public function index()
     {
+        $customers = $this->Customers->find('all');
         $customers = $this->paginate($this->Customers);
 
         $this->set(compact('customers'));
@@ -70,6 +90,64 @@ class CustomersController extends AppController
         }
         $this->set(compact('customer'));
     }
+
+    public function find()
+    {
+        if ($this->request->isPost()) {
+            $requestData = $this->request->getData();
+            $conditions = [];
+            if (!empty($requestData['first_name like'])) {
+                $conditions['first_name like'] = $requestData['first_name'] . '%';
+            }
+            if (!empty($requestData['last_name'])) {
+                $conditions['last_name like'] = $requestData['last_name'] . '%';
+            }
+            if (!empty($requestData['telephone_number'])) {
+                $conditions['telephone_number like'] = $requestData['telephone_number'] . '%';
+            }
+            $clients = $this->Customers->find()
+                ->where($conditions);
+            //$this->log($clients, 'debug');
+            $customers = $this->paginate($clients);
+            $this->set('customers', $customers);
+        }
+        $base_dir = TMP . 'csv' . DS;
+        //$this->log($base_dir, 'debug');
+        if (!file_exists($base_dir)) {
+            mkdir($base_dir, 0777, true);
+        }
+
+        $fp = fopen("{$base_dir}date('YmdHis').csv", 'w');
+
+        //カラム名取得
+        // $columns = TableRegistry::getTableLocator()->get('Customers');
+        //$this->log($columns, 'debug');
+        //foreach ($columns as $column) {
+        //    $this->log($column, 'debug');
+        //}
+
+        //$this->log($fp, 'debug');
+        foreach ($clients as $client) {
+            $output_data = $client->toArray();
+            //$this->log($output_data, 'debug');
+            if ($client === 0) {
+                // 取得したデータのキーからヘッダーを作成する
+                fputcsv($fp, array_keys($output_data));
+            }
+            fputcsv($fp, $output_data, ",", '"');
+        }
+        fclose($fp);
+    }
+
+    public function order($id = null)
+    {
+        //顧客情報
+        $client = $this->Customers->get($id, [
+            'contain' => [],
+        ]);
+        $this->set('client', $client);
+    }
+
 
     /**
      * Edit method

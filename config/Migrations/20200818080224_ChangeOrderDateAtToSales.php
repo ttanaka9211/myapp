@@ -2,7 +2,7 @@
 
 use Migrations\AbstractMigration;
 
-class AddQuanitiyToSales extends AbstractMigration
+class ChangeOrderDateAtToSales extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,25 +14,19 @@ class AddQuanitiyToSales extends AbstractMigration
     public function up()
     {
         $table = $this->table('sales');
-        $table->addColumn('product_price', 'integer', [
+        $table->changeColumn('order_date_at', 'date', [
             'default' => null,
-            'after' => 'product_name',
-            'limit' => 3,
-            'null' => false,
-        ]);
-        $table->addColumn('quantity', 'integer', [
-            'default' => null,
-            'after' => 'product_price',
-            'limit' => 3,
             'null' => false,
         ]);
         $table->update();
     }
+
     public function down()
     {
         $table = $this->table('sales');
-        $table->removeColumn('quantity');
-        $table->removeColumn('product_price');
-        $table->update();
+        $table->changeColumn('order_date_at', 'datetime', [
+            'default' => null,
+            'null' => false,
+        ]);
     }
 }

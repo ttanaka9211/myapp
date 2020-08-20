@@ -1,35 +1,20 @@
-<?php
-
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Customer[]|\Cake\Collection\CollectionInterface $customers
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Customer'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="customers find large-9 medium-8 columns content">
     <h3>Find customer</h3>
-    <?= $this->Form->create(
-        null,
-        array('url' => array('action' => 'find'))
-    ) ?>
+    <?= $this->Form->create() ?>
     <fieldset>
         <?php
-        echo $this->Form->control('first_name');
-        echo $this->Form->control('last_name');
-        echo $this->Form->control('telephone_number');
+        echo $this->Form->input('first_name');
+        echo $this->Form->input('last_name');
+        echo $this->Form->input('telephone_number');
         echo $this->Form->button('Submit');
-        echo $this->Form->end();
-        $this->Paginator->numbers()
+        echo $this->Form->end()
         ?>
     </fieldset>
-
     <div class="customers index large-9 medium-8 columns content">
         <h3><?= __('Customers') ?></h3>
+        <a href="<?= $this->Url->build('/customers/export') ?>" class="btn btn-success">
+            <span class="glyphicon glyphicon-download" aria-hidden="true">CSV出力</span>
+        </a>
         <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
