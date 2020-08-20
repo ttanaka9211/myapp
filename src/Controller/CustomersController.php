@@ -55,9 +55,9 @@ class CustomersController extends AppController
     public function index()
     {
         $query = $this->Customers->find('search', ['search' => $this->request->getQuery()]);
-        $test = $this->Customers->find('search', ['search' => $this->request->getData()])->where([]);
+        //$test = $this->Customers->find('search', ['search' => $this->request->getData()])->where([]);
         $customers = $this->paginate($query);
-        $this->log($test, 'debug');
+        //$this->log($test, 'debug');
         $this->set(compact('customers'));
     }
 
