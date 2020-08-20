@@ -190,6 +190,7 @@ class UsersController extends AppController
             $fp = fopen("{$base_dir}{$table}.csv", 'w');
             foreach ($data as $key => $row) {
                 $output_data = $row->toArray();
+                $this->log($output_data, 'debug');
                 if ($key === 0) {
                     // 取得したデータのキーからヘッダーを作成する
                     fputcsv($fp, array_keys($output_data));
