@@ -20,7 +20,12 @@ class CustomersController extends AppController
     {
         parent::initialize();
         $this->Products = TableRegistry::getTableLocator()->get('products');
+        //検索するアクションを設定
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index']
+        ]);
     }
+
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -49,9 +54,10 @@ class CustomersController extends AppController
      */
     public function index()
     {
-        $customers = $this->Customers->find('all');
-        $customers = $this->paginate($this->Customers);
-
+        $query = $this->Customers->find('search', ['search' => $this->request->getQuery()]);
+        $test = $this->Customers->find('search', ['search' => $this->request->getData()])->where([]);
+        $customers = $this->paginate($query);
+        $this->log($test, 'debug');
         $this->set(compact('customers'));
     }
 

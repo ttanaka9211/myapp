@@ -15,19 +15,17 @@
     <h3>Find customer</h3>
     <?= $this->Form->create(
         null,
-        array('url' => array('action' => 'find'))
-    ) ?>
+        ['valueSources' => 'query']
+    ); ?>
     <fieldset>
         <?php
-        echo $this->Form->control('first_name');
+        //echo $this->Form->control('first_name');
         echo $this->Form->control('last_name');
         echo $this->Form->control('telephone_number');
-        echo $this->Form->button('Submit');
+        echo $this->Form->button('search');
         echo $this->Form->end();
-        $this->Paginator->numbers()
         ?>
     </fieldset>
-
     <div class="customers index large-9 medium-8 columns content">
         <h3><?= __('Customers') ?></h3>
         <table cellpadding="0" cellspacing="0">
