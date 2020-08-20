@@ -107,18 +107,21 @@ class CustomersController extends AppController
             }
             $clients = $this->Customers->find()
                 ->where($conditions);
-            $this->log($clients, 'debug');
+            //$this->log($clients, 'debug');
             $customers = $this->paginate($clients);
             $this->set('customers', $customers);
         }
         $base_dir = TMP . 'csv' . DS;
+        //$this->log($base_dir, 'debug');
         if (!file_exists($base_dir)) {
             mkdir($base_dir, 0777, true);
         }
 
         $fp = fopen("{$base_dir}date('YmdHis').csv", 'w');
+        //$this->log($fp, 'debug');
         foreach ($clients as $client) {
             $output_data = $client->toArray();
+            $this->log($output_data, 'debug');
             if ($client === 0) {
                 // 取得したデータのキーからヘッダーを作成する
                 fputcsv($fp, array_keys($output_data));
