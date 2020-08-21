@@ -117,7 +117,7 @@ class CustomersController extends AppController
             $customers = $this->paginate($clients);
             $this->set('customers', $customers);
         }
-        $base_dir = WEBROOT . 'csv' . DS;
+        $base_dir = TMP . 'csv' . DS;
         //$this->log($base_dir, 'debug');
         if (!file_exists($base_dir)) {
             mkdir($base_dir, 0777, true);
