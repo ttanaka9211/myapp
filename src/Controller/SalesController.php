@@ -15,6 +15,17 @@ use Cake\ORM\TableRegistry;
  */
 class SalesController extends AppController
 {
+    public $paginate = [
+        'limit' => 20
+    ];
+    public function initialize()
+    {
+        parent::initialize();
+        //検索処理のロード、アクション指定
+        $this->loadComponent('Search.Prg', [
+            'action' => ['index', 'search']
+        ]);
+    }
     /**
      * Index method
      *
@@ -22,12 +33,19 @@ class SalesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
+        /* $this->paginate = [
             'contain' => ['Customers', 'Products'],
         ];
         $sales = $this->paginate($this->Sales);
+        $this->set(compact('sales')); */
+        $query = $this->Sales
+            ->find('search', ['search' => $this->request->getQuery()]);
+        var_dump($query);
+        $sales = $this->paginate($query);
+
         $this->set(compact('sales'));
     }
+
 
     /**
      * View method
@@ -120,7 +138,7 @@ class SalesController extends AppController
 
         //保存
         $sale = $this->request->getData();
-        Log::write('debug', $sale);
+        //Log::write('debug', $sale);
         $sale = $this->Sales->newEntity();
         //debug($sale);
         if ($this->request->isPost()) {
@@ -139,5 +157,15 @@ class SalesController extends AppController
         $this->set(compact('sale'));
 
         // return $this->redirect(['controller' => 'Sales', 'action' => 'index']);
+    }
+
+    public function search()
+    {
+        $query = $this->Sales
+            ->find('search', ['search' => $this->request->getQuery()]);
+        $this->log($query, 'debug');
+        $sales = $this->paginate($query);
+
+        $this->set(compact('sales'));
     }
 }

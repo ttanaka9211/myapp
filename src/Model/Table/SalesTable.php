@@ -50,6 +50,33 @@ class SalesTable extends Table
             'foreignKey' => 'product_id',
             'joinType' => 'INNER',
         ]);
+
+        // ビヘイビア（friendsofcake/search）の追加
+        $this->addBehavior("Search.Search");
+
+        //検索条件の追加
+        $this->searchManager()
+            /* ->callback('start', [
+                'callback' => function ($query, $args, $filter) {
+                    if (empty($args['end'])) {
+                        return;
+                    }
+                    return $query->where(function ($exp) use ($args) {
+                        return $exp->between(
+                            'Sales.order_date_at',
+                            $args['start'],
+                            $args['end']
+                        );
+                    });
+                }
+            ])
+            ->callback('end', [
+                'callback' => function ($query, $args, $filter) {
+                }
+            ]);  */
+            ->like('customer_name', ['before' => true, 'after' => true]);
+        //->compare('order_date_at', ['operator' => '>=']);
+        //->compare('order_to', ['operator' => '<=', 'field' => ['order_date_at']]);
     }
 
     /**

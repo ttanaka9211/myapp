@@ -22,15 +22,10 @@
         ['valueSources' => 'query']
     ); ?>
     <fieldset>
-
-        <!-- <?= $this->Form->control(__('start'), [
-                    'type' => 'date'
-                ]); ?>
-        <?= $this->Form->control(__('end'), [
-            'type' => 'date'
-        ]); ?> -->
         <?php
         echo $this->Form->control('customer_name');
+        //echo $this->Form->control(__('order_from'), ['type' => 'date']);
+        //echo $this->Form->control(__('order_to'), ['type' => 'date']);
         echo $this->Form->control(__('Search'), ['type' => 'submit']);
         echo $this->Form->end();
         ?>
