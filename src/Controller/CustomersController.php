@@ -117,7 +117,7 @@ class CustomersController extends AppController
             $customers = $this->paginate($clients);
             $this->set('customers', $customers);
         }
-        $base_dir = WEBROOT . 'csv' . DS;
+        $base_dir = TMP . 'csv' . DS;
         //$this->log($base_dir, 'debug');
         if (!file_exists($base_dir)) {
             mkdir($base_dir, 0777, true);
@@ -125,7 +125,7 @@ class CustomersController extends AppController
         $data = TableRegistry::getTableLocator()->get('Customers')->find()
             ->toArray();
 
-        $fp = fopen("{$base_dir}date('YmdHis').csv", 'w');
+        $fp = fopen("{$base_dir}data.csv", 'w');
 
         foreach ($data as $key => $row) {
             $output_data = $row->toArray();
@@ -143,7 +143,17 @@ class CustomersController extends AppController
         fclose($fp);
     }
 
-
+    public function download()
+    {
+        $this->autoRender = false;
+        $response = $this->response->withFile(
+            TMP . 'csv/data.csv',
+            [
+                'download' => true,
+            ]
+        );
+        return $response;
+    }
     public function order($id = null)
     {
         //顧客情報
