@@ -56,7 +56,7 @@ class SalesTable extends Table
 
         //検索条件の追加
         $this->searchManager()
-            /* ->callback('start', [
+            ->callback('start', [
                 'callback' => function ($query, $args, $filter) {
                     if (empty($args['end'])) {
                         return;
@@ -73,8 +73,8 @@ class SalesTable extends Table
             ->callback('end', [
                 'callback' => function ($query, $args, $filter) {
                 }
-            ]);  */
-            ->like('customer_name', ['before' => true, 'after' => true]);
+            ]);
+        // ->like('customer_name', ['before' => true, 'after' => true]);
         //->compare('order_date_at', ['operator' => '>=']);
         //->compare('order_to', ['operator' => '<=', 'field' => ['order_date_at']]);
     }

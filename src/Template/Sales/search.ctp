@@ -23,7 +23,6 @@
     ); ?>
     <fieldset>
         <?php
-        echo $this->Form->control('customer_name');
         //echo $this->Form->control(__('order_from'), ['type' => 'date']);
         //echo $this->Form->control(__('order_to'), ['type' => 'date']);
         echo $this->Form->control(__('Search'), ['type' => 'submit']);

@@ -113,6 +113,7 @@ class CustomersController extends AppController
             }
             $clients = $this->Customers->find()
                 ->where($conditions);
+
             //$this->log($clients, 'debug');
             $customers = $this->paginate($clients);
             $this->set('customers', $customers);
