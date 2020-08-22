@@ -102,19 +102,28 @@ class CustomersController extends AppController
     {
         if ($this->request->isPost()) {
             $requestData = $this->request->getData();
+            //$this->log($requestData, 'debug');
+            //sessionを使う？
+            $a = $requestData['first_name'];
+            $b = $requestData['telephone_number'];
+            //$this->log($a, 'debug');
+            //$this->log($b, 'debug');
+            $session = $this->request->getSession();
+            $session->write($requestData);
+
             $conditions = [];
-            if (!empty($requestData['first_name'])) {
+            if (!empty($session->read('first_name'))) {
                 $conditions['first_name like'] = $requestData['first_name'] . '%';
             }
-            if (!empty($requestData['last_name'])) {
+            if (!empty($session->read('last_name'))) {
                 $conditions['last_name like'] = $requestData['last_name'] . '%';
             }
-            if (!empty($requestData['telephone_number'])) {
+            if (!empty($session->read('telephone_number'))) {
                 $conditions['telephone_number like'] = $requestData['telephone_number'] . '%';
             }
             $query = $this->Customers->find()
                 ->where($conditions);
-            //$this->log($clients, 'debug');
+            //$this->log($query, 'debug');
             $customers = $this->paginate($query);
             $this->set('customers', $customers);
         }
