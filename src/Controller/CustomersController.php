@@ -16,6 +16,9 @@ use Cake\ORM\TableRegistry;
  */
 class CustomersController extends AppController
 {
+    public $paginate = [
+        'limit' => 1
+    ];
     public function initialize()
     {
         parent::initialize();
@@ -44,9 +47,7 @@ class CustomersController extends AppController
         return true;
     }
 
-    public $paginate = [
-        'limit' => 10
-    ];
+
     /**
      * Index method
      *
@@ -102,7 +103,7 @@ class CustomersController extends AppController
         if ($this->request->isPost()) {
             $requestData = $this->request->getData();
             $conditions = [];
-            if (!empty($requestData['first_name like'])) {
+            if (!empty($requestData['first_name'])) {
                 $conditions['first_name like'] = $requestData['first_name'] . '%';
             }
             if (!empty($requestData['last_name'])) {
@@ -111,16 +112,21 @@ class CustomersController extends AppController
             if (!empty($requestData['telephone_number'])) {
                 $conditions['telephone_number like'] = $requestData['telephone_number'] . '%';
             }
-            $clients = $this->Customers->find()
+            $query = $this->Customers->find()
                 ->where($conditions);
             //$this->log($clients, 'debug');
-            $customers = $this->paginate($clients);
+            $customers = $this->paginate($query);
             $this->set('customers', $customers);
         }
+    }
+
+    public function download()
+    {
+        $this->autoRender = false;
         $base_dir = TMP . 'csv' . DS;
         //$this->log($base_dir, 'debug');
         if (!file_exists($base_dir)) {
-            mkdir($base_dir, 0777, true);
+            mkdir($base_dir, 0776, true);
         }
         $data = TableRegistry::getTableLocator()->get('Customers')->find()
             ->toArray();
@@ -130,22 +136,18 @@ class CustomersController extends AppController
         foreach ($data as $key => $row) {
             $output_data = $row->toArray();
             //$this->log($output_data, 'debug');
-            if ($key === 0) {
+            if ($key === -1) {
                 // 取得したデータのキーからヘッダーを作成する
                 fputcsv($fp, array_keys($output_data));
             }
         }
-
+        $clients = $this->request->getQuery();
         foreach ($clients as $client) {
             $output_data = $client->toArray();
             fputcsv($fp, $output_data, ",", '"');
         }
         fclose($fp);
-    }
 
-    public function download()
-    {
-        $this->autoRender = false;
         $response = $this->response->withFile(
             TMP . 'csv/data.csv',
             [
