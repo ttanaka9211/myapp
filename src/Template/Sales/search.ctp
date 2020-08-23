@@ -17,14 +17,12 @@
 </nav>
 <div class="customers find large-9 medium-8 columns content">
     <h3>Find customer</h3>
-    <?php echo $this->Form->create(
-        null,
-        ['valueSources' => 'query']
-    ); ?>
+    <?= $this->Form->create(); ?>
     <fieldset>
         <?php
-        //echo $this->Form->control(__('order_from'), ['type' => 'date']);
-        //echo $this->Form->control(__('order_to'), ['type' => 'date']);
+        //echo $this->Form->control(__('customer_name'));
+        echo $this->Form->control(__('start'), ['type' => 'date']);
+        echo $this->Form->control(__('end'), ['type' => 'date']);
         echo $this->Form->control(__('Search'), ['type' => 'submit']);
         echo $this->Form->end();
         ?>

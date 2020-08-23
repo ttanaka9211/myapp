@@ -16,14 +16,14 @@ use Cake\ORM\TableRegistry;
 class SalesController extends AppController
 {
     public $paginate = [
-        'limit' => 20
+        'limit' => 3
     ];
     public function initialize()
     {
         parent::initialize();
         //検索処理のロード、アクション指定
         $this->loadComponent('Search.Prg', [
-            'action' => ['index', 'search']
+            'action' => ['index']
         ]);
     }
     /**
@@ -161,11 +161,23 @@ class SalesController extends AppController
 
     public function search()
     {
-        $query = $this->Sales
-            ->find('search', ['search' => $this->request->getQuery()]);
-        $this->log($query, 'debug');
-        $sales = $this->paginate($query);
+        if ($this->request->isPost()) {
+            $date = $this->request->getData();
+            $this->log($date, 'debug');
+            try {
+                $query = $this->Sales->find()
+                    ->where([
+                        'order_date_at >=' => $date['start'],
+                        'order_date_at <=' => $date['end'],
+                    ])
+                    ->toArray();
+            } catch (\Exception $e) {
+                $this->log($e->getErrors, 'debug');
+            }
+            $this->log($query, 'debug');
 
-        $this->set(compact('sales'));
+            $sales = $this->paginate($query);
+            $this->set(compact('sales'));
+        }
     }
 }
