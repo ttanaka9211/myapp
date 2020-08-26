@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Log\Log;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Hash;
 
 /**
  * Sales Controller
@@ -163,21 +164,19 @@ class SalesController extends AppController
     {
         if ($this->request->isPost()) {
             $date = $this->request->getData();
+            var_dump($date);
             $this->log($date, 'debug');
-            try {
-                $query = $this->Sales->find()
-                    ->where([
-                        'order_date_at >=' => $date['start'],
-                        'order_date_at <=' => $date['end'],
-                    ])
-                    ->toArray();
-            } catch (\Exception $e) {
-                $this->log($e->getErrors, 'debug');
-            }
+            $end = '2020-02-31';
+            /* $query = $this->Sales->find()
+                ->where([
+                    'order_date_at >=' => $start,
+                    'order_date_at <=' => $end,
+                ])
+                ->toArray();
             $this->log($query, 'debug');
 
             $sales = $this->paginate($query);
-            $this->set(compact('sales'));
+            $this->set(compact('sales')); */
         }
     }
 }

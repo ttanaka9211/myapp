@@ -21,7 +21,18 @@
     <fieldset>
         <?php
         //echo $this->Form->control(__('customer_name'));
-        echo $this->Form->control(__('start'), ['type' => 'date']);
+        $this->Form->setTemplates([
+            'dateWidget' => '<input type="Date" name="start" value="{{value}}">'
+        ]);
+        echo $this->Form->control('start', [
+            'type' => 'date',
+            'name' => 'start',
+
+
+        ]);
+        $this->Form->setTemplates([
+            'dateWidget' => '<input type="Date" name="end" value="{{value}}">'
+        ]);
         echo $this->Form->control(__('end'), ['type' => 'date']);
         echo $this->Form->control(__('Search'), ['type' => 'submit']);
         echo $this->Form->end();

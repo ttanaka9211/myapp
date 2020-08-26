@@ -39,7 +39,7 @@ class AppView extends View
     public function initialize()
     {
         /* $this->Form->setTemplates([
-            'dateWidget' => '<input type="Date" name="{{name}}" value="{{value}}">'
+            'dateWidget' => '<input type="date" name="{{name}}" value="{{value}}">'
         ]); */
     }
 }
