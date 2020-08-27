@@ -164,19 +164,19 @@ class SalesController extends AppController
     {
         if ($this->request->isPost()) {
             $date = $this->request->getData();
-            var_dump($date);
             $this->log($date, 'debug');
-            $end = '2020-02-31';
-            /* $query = $this->Sales->find()
+            $start = $date['start'];
+            $end = $date['end'];
+            var_dump($start);
+            $sales = $this->Sales->find()
                 ->where([
                     'order_date_at >=' => $start,
                     'order_date_at <=' => $end,
                 ])
                 ->toArray();
-            $this->log($query, 'debug');
-
-            $sales = $this->paginate($query);
-            $this->set(compact('sales')); */
+            $this->log($sales, 'debug');
+            //$sales = $this->paginate($query);
+            $this->set(compact('sales'));
         }
     }
 }
