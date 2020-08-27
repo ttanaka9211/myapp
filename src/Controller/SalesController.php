@@ -173,7 +173,7 @@ class SalesController extends AppController
                     'order_date_at >=' => $start,
                     'order_date_at <=' => $end,
                 ])
-                ->toArray();
+                ->all();
             $this->log($sales, 'debug');
             //$sales = $this->paginate($query);
             $this->set(compact('sales'));

@@ -18,22 +18,30 @@
 <div class="customers find large-9 medium-8 columns content">
     <h3>Find customer</h3>
     <?php echo $this->Form->create(
-        null,
-        ['valueSources' => 'query']
-    ); ?>
-    <fieldset>
-
-        <!-- <?= $this->Form->control(__('start'), [
-                    'type' => 'date'
-                ]); ?>
-        <?= $this->Form->control(__('end'), [
-            'type' => 'date'
-        ]); ?> -->
-        <?php
-        echo $this->Form->control('customer_name');
-        echo $this->Form->control(__('Search'), ['type' => 'submit']);
-        echo $this->Form->end();
-        ?>
+        'Sales',
+        ['url' => ['action' => 'search'], 'type' => 'get']
+    ) ?>
+    <?php
+    //echo $this->Form->control(__('customer_name'));
+    $this->Form->setTemplates([
+        'dateWidget' => '<input type="Date" name="start" value="{{value}}">'
+    ]);
+    echo $this->Form->control('start', [
+        'type' => 'date',
+        'name' => 'start',
+        'value' => $this->request->getQuery('start'),
+    ]);
+    $this->Form->setTemplates([
+        'dateWidget' => '<input type="Date" name="end" value="{{value}}">'
+    ]);
+    echo $this->Form->control('end', [
+        'type' => 'date',
+        'name' => 'end',
+        'value' => $this->request->getQuery('end'),
+    ]);
+    echo $this->Form->control(__('Search'), ['type' => 'submit']);
+    echo $this->Form->end();
+    ?>
     </fieldset>
     <div class="sales index large-9 medium-8 columns content">
         <h3><?= __('Sales') ?></h3>
