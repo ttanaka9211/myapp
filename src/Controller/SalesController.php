@@ -189,8 +189,9 @@ class SalesController extends AppController
                 ->where(function ($exp) {
                     return $exp->between('order_date_at', $this->request->getQuery('start'), $this->request->getQuery('end'));
                 })
-                ->toArray();
-            var_dump($query);
+                //->toArray()
+            ;
+            //var_dump($query);
             $sales = $this->paginate($query);
             $this->set(compact('sales'));
         }

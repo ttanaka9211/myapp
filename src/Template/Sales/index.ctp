@@ -26,18 +26,20 @@
     $this->Form->setTemplates([
         'dateWidget' => '<input type="Date" name="start" value="{{value}}">'
     ]);
-    echo $this->Form->control('start', [
+    echo $this->Form->control(__('start'), [
         'type' => 'date',
         'name' => 'start',
         'value' => $this->request->getQuery('start'),
+        'field' => 'order_date_at'
     ]);
     $this->Form->setTemplates([
         'dateWidget' => '<input type="Date" name="end" value="{{value}}">'
     ]);
-    echo $this->Form->control('end', [
+    echo $this->Form->control(__('end'), [
         'type' => 'date',
         'name' => 'end',
         'value' => $this->request->getQuery('end'),
+        'field' => 'order_date_at'
     ]);
     echo $this->Form->control(__('Search'), ['type' => 'submit']);
     echo $this->Form->end();
