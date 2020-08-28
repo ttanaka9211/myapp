@@ -19,7 +19,7 @@
     <h3>Find customer</h3>
     <?php echo $this->Form->create(
         'Sales',
-        ['url' => ['action' => 'search'], 'type' => 'get']
+        ['url' => ['action' => 'find'], 'type' => 'get']
     ) ?>
     <?php
     //echo $this->Form->control(__('customer_name'));

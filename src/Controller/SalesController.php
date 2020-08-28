@@ -19,14 +19,13 @@ class SalesController extends AppController
     public $paginate = [
         'limit' => 3
     ];
+
     public function initialize()
     {
         parent::initialize();
-        //検索処理のロード、アクション指定
-        $this->loadComponent('Search.Prg', [
-            'action' => ['index']
-        ]);
+        $this->loadComponent('Paginator');
     }
+
     /**
      * Index method
      *
@@ -34,15 +33,15 @@ class SalesController extends AppController
      */
     public function index()
     {
-        /* $this->paginate = [
+        $this->paginate = [
             'contain' => ['Customers', 'Products'],
         ];
         $sales = $this->paginate($this->Sales);
-        $this->set(compact('sales')); */
-        $query = $this->Sales
+        $this->set(compact('sales'));
+        /* $query = $this->Sales
             ->find('search', ['search' => $this->request->getQuery()]);
         var_dump($query);
-        $sales = $this->paginate($query);
+        $sales = $this->paginate($query); */
 
         $this->set(compact('sales'));
     }
@@ -176,6 +175,23 @@ class SalesController extends AppController
                 ->all();
             $this->log($sales, 'debug');
             //$sales = $this->paginate($query);
+            $this->set(compact('sales'));
+        }
+    }
+
+    public function find()
+    {
+        if ($this->request->is('get')) {
+            //$start = $this->request->getQuery('start');
+            //$end = $this->request->getQuery('end');
+            //var_dump($start);
+            $query = $this->Sales->find()
+                ->where(function ($exp) {
+                    return $exp->between('order_date_at', $this->request->getQuery('start'), $this->request->getQuery('end'));
+                })
+                ->toArray();
+            var_dump($query);
+            $sales = $this->paginate($query);
             $this->set(compact('sales'));
         }
     }
