@@ -20,7 +20,7 @@
     <?= $this->Form->create(); ?>
     <fieldset>
         <?php
-        //echo $this->Form->control(__('customer_name'));
+        echo $this->Form->control(__('customer_name'), ['type' => 'date']);
         $this->Form->setTemplates([
             'dateWidget' => '<input type="Date" name="start" value="{{value}}">'
         ]);

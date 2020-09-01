@@ -6,6 +6,7 @@ use App\Controller\AppController;
 use Cake\Log\Log;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Hash;
+use Cake\I18n\Date;
 
 /**
  * Sales Controller
@@ -17,7 +18,7 @@ use Cake\Utility\Hash;
 class SalesController extends AppController
 {
     public $paginate = [
-        'limit' => 3
+        'limit' => 10
     ];
 
     public function initialize()
@@ -163,10 +164,24 @@ class SalesController extends AppController
     {
         if ($this->request->isPost()) {
             $date = $this->request->getData();
-            $this->log($date, 'debug');
+            //$this->log($date, 'debug');
             $start = $date['start'];
             $end = $date['end'];
-            var_dump($start);
+            $date_test = $date['customer_name'];
+            $time = new Date($date['customer_name']);
+            //$time->format('Ymd'); #一般的な表記ではなくPHPの表記
+            var_dump($time);
+            $time = Date::createFromFormat(
+                'Y-m-d',
+                $date_test,
+                'Asia/Tokyo'
+            );
+            var_dump($time);
+
+            /* //配列をimplode
+            $a = implode("-", $date_test);
+            var_dump($a); */
+
             $sales = $this->Sales->find()
                 ->where([
                     'order_date_at >=' => $start,
