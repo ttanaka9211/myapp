@@ -15,7 +15,7 @@ class AddDeleteFlagToProducts extends AbstractMigration
     {
         $table = $this->table('products');
         $table->addColumn('delete_flag', 'integer', [
-            'default' => null,
+            'default' => 0,
             'limit' => 1,
             'after' => 'price',
             'null' => false,

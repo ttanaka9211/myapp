@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -42,13 +43,10 @@ class ProductsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-<<<<<<< HEAD
 
         $this->hasMany('Sales', [
             'foreignKey' => 'product_id',
         ]);
-=======
->>>>>>> feature/add-product
     }
 
     /**

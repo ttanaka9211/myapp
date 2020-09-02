@@ -24,24 +24,28 @@ class ProductsSeed extends AbstractSeed
             [
                 'name' => 'A',
                 'price' => '2800',
+                'delete_flag' => '1',
                 'created' => $datetime,
                 'modified' => $datetime
             ],
             [
                 'name' => 'B',
                 'price' => '4800',
+                'delete_flag' => '1',
                 'created' => $datetime,
                 'modified' => $datetime
             ],
             [
                 'name' => 'C',
                 'price' => '1080',
+                'delete_flag' => '1',
                 'created' => $datetime,
                 'modified' => $datetime
             ],
             [
                 'name' => 'D',
                 'price' => '6800',
+                'delete_flag' => '1',
                 'created' => $datetime,
                 'modified' => $datetime
             ],
