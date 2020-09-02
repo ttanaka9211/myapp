@@ -869,3 +869,6 @@ msgstr ""
 #: View/Widget/DateTimeWidget.php:550
 msgid "December"
 msgstr ""
+
+msgid "Find Customers"
+msgstr "顧客検索"

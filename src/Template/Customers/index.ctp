@@ -12,7 +12,7 @@
     </ul>
 </nav>
 <div class="customers find large-9 medium-8 columns content">
-    <h3>Find customer</h3>
+    <h3><?= __('Find Customers') ?></h3>
     <?= $this->Form->create(
         null,
         ['valueSources' => 'query']
