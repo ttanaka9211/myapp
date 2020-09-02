@@ -24,7 +24,10 @@ class ProductsTableTest extends TestCase
      */
     public $fixtures = [
         'app.Products',
+<<<<<<< HEAD
         'app.Sales',
+=======
+>>>>>>> feature/add-product
     ];
 
     /**

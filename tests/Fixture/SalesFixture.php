@@ -54,9 +54,15 @@ class SalesFixture extends TestFixture
                 'product_name' => 'Lorem ipsum dolor sit amet',
                 'product_price' => 1,
                 'quantity' => 1,
+<<<<<<< HEAD
                 'order_date_at' => '2020-08-15 14:00:47',
                 'created' => '2020-08-15 14:00:47',
                 'modified' => '2020-08-15 14:00:47',
+=======
+                'order_date_at' => '2020-08-13 11:11:56',
+                'created' => '2020-08-13 11:11:56',
+                'modified' => '2020-08-13 11:11:56',
+>>>>>>> feature/add-product
             ],
         ];
         parent::init();

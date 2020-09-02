@@ -21,7 +21,10 @@ class ProductsControllerTest extends TestCase
      */
     public $fixtures = [
         'app.Products',
+<<<<<<< HEAD
         'app.Sales',
+=======
+>>>>>>> feature/add-product
     ];
 
     /**

@@ -14,8 +14,11 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?></li>
+<<<<<<< HEAD
         <li><?= $this->Html->link(__('List Sales'), ['controller' => 'Sales', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Sale'), ['controller' => 'Sales', 'action' => 'add']) ?></li>
+=======
+>>>>>>> feature/add-product
     </ul>
 </nav>
 <div class="products form large-9 medium-8 columns content">

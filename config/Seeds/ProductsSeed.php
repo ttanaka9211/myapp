@@ -1,4 +1,5 @@
 <?php
+
 use Migrations\AbstractSeed;
 
 /**
@@ -18,38 +19,31 @@ class ProductsSeed extends AbstractSeed
      */
     public function run()
     {
+        $datetime = date('Y-m-d H:i:s');
         $data = [
             [
-                'id' => '1',
                 'name' => 'A',
                 'price' => '2800',
-                'delete_flag' => '0',
-                'created' => '2020-08-13 10:37:46',
-                'modified' => '2020-08-13 10:37:46',
+                'created' => $datetime,
+                'modified' => $datetime
             ],
             [
-                'id' => '2',
                 'name' => 'B',
                 'price' => '4800',
-                'delete_flag' => '0',
-                'created' => '2020-08-13 10:37:46',
-                'modified' => '2020-08-13 10:37:46',
+                'created' => $datetime,
+                'modified' => $datetime
             ],
             [
-                'id' => '3',
                 'name' => 'C',
                 'price' => '1080',
-                'delete_flag' => '0',
-                'created' => '2020-08-13 10:37:46',
-                'modified' => '2020-08-13 10:37:46',
+                'created' => $datetime,
+                'modified' => $datetime
             ],
             [
-                'id' => '4',
                 'name' => 'D',
                 'price' => '6800',
-                'delete_flag' => '0',
-                'created' => '2020-08-13 10:37:46',
-                'modified' => '2020-08-13 10:37:46',
+                'created' => $datetime,
+                'modified' => $datetime
             ],
         ];
 

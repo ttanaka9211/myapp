@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature/add-product
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -35,7 +38,11 @@ class ProductsController extends AppController
     public function view($id = null)
     {
         $product = $this->Products->get($id, [
+<<<<<<< HEAD
             'contain' => ['Sales'],
+=======
+            'contain' => [],
+>>>>>>> feature/add-product
         ]);
 
         $this->set('product', $product);
@@ -104,6 +111,7 @@ class ProductsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+<<<<<<< HEAD
 
     public function product()
     {
@@ -120,3 +128,6 @@ class ProductsController extends AppController
         // $this->log($product);
     }
 }
+=======
+}
+>>>>>>> feature/add-product

@@ -41,8 +41,13 @@ class ProductsFixture extends TestFixture
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'price' => 1,
+<<<<<<< HEAD
                 'created' => '2020-08-16 12:29:43',
                 'modified' => '2020-08-16 12:29:43',
+=======
+                'created' => '2020-08-13 10:09:10',
+                'modified' => '2020-08-13 10:09:10',
+>>>>>>> feature/add-product
             ],
         ];
         parent::init();

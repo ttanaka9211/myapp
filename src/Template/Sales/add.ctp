@@ -20,7 +20,11 @@
     <fieldset>
         <legend><?= __('Add Sale') ?></legend>
         <?php
+<<<<<<< HEAD
         echo $this->Form->control($customer->id);
+=======
+        echo $this->Form->control('customer_id', ['options' => $customers, 'value' => 'name']);
+>>>>>>> feature/add-product
         echo $this->Form->control('customer_name');
         echo $this->Form->control('product_id', ['options' => $products]);
         echo $this->Form->control('product_name');

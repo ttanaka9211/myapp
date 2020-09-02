@@ -11,8 +11,11 @@ use Cake\ORM\Entity;
  * @property int $price
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+<<<<<<< HEAD
  *
  * @property \App\Model\Entity\Sale[] $sales
+=======
+>>>>>>> feature/add-product
  */
 class Product extends Entity
 {
@@ -30,6 +33,9 @@ class Product extends Entity
         'price' => true,
         'created' => true,
         'modified' => true,
+<<<<<<< HEAD
         'sales' => true,
+=======
+>>>>>>> feature/add-product
     ];
 }
