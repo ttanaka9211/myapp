@@ -127,11 +127,6 @@ class CustomersController extends AppController
             $customers = $this->paginate($query);
             $this->set('customers', $customers);
         }
-    }
-
-    public function download()
-    {
-        $this->autoRender = false;
         $base_dir = TMP . 'csv' . DS;
         //$this->log($base_dir, 'debug');
         if (!file_exists($base_dir)) {
