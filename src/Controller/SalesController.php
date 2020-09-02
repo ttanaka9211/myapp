@@ -167,20 +167,6 @@ class SalesController extends AppController
             //$this->log($date, 'debug');
             $start = $date['start'];
             $end = $date['end'];
-            $date_test = $date['customer_name'];
-            $time = new Date($date['customer_name']);
-            //$time->format('Ymd'); #一般的な表記ではなくPHPの表記
-            var_dump($time);
-            $time = Date::createFromFormat(
-                'Y-m-d',
-                $date_test,
-                'Asia/Tokyo'
-            );
-            var_dump($time);
-
-            /* //配列をimplode
-            $a = implode("-", $date_test);
-            var_dump($a); */
 
             $sales = $this->Sales->find()
                 ->where([
@@ -189,7 +175,6 @@ class SalesController extends AppController
                 ])
                 ->all();
             $this->log($sales, 'debug');
-            //$sales = $this->paginate($query);
             $this->set(compact('sales'));
         }
     }
