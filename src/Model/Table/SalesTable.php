@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
 
-=======
->>>>>>> feature/add-product
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -111,20 +108,11 @@ class SalesTable extends Table
             ->requirePresence('product_price', 'create')
             ->notEmptyString('product_price');
 
-        $validator
-<<<<<<< HEAD
-            ->date('order_date_at')
-            ->allowEmptyDateTime('order_date_at');
-=======
-            ->integer('quantity')
-            ->requirePresence('quantity', 'create')
-            ->notEmptyString('quantity');
 
         $validator
             ->dateTime('order_date_at')
             ->requirePresence('order_date_at', 'create')
             ->notEmptyDateTime('order_date_at');
->>>>>>> feature/add-product
 
         return $validator;
     }
@@ -143,8 +131,4 @@ class SalesTable extends Table
 
         return $rules;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/add-product
