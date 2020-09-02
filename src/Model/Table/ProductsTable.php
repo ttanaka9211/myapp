@@ -38,6 +38,10 @@ class ProductsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Sales', [
+            'foreignKey' => 'product_id',
+        ]);
     }
 
     /**

@@ -23,7 +23,7 @@ class CustomersSeed extends AbstractSeed
 
         $faker = Faker\Factory::create('ja_JP');
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $data[] = [
                 'first_name' => $faker->unique->firstName,
                 'last_name' => $faker->unique->lastName,
@@ -32,9 +32,8 @@ class CustomersSeed extends AbstractSeed
                 'created' => $datetime,
                 'modified' => $datetime
             ];
-
-            $table = $this->table('customers');
-            $table->insert($data)->save();
         }
+        $table = $this->table('customers');
+        $table->insert($data)->save();
     }
 }
