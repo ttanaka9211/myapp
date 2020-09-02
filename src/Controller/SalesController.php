@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Log\Log;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Hash;
+use Cake\I18n\Date;
 
 /**
  * Sales Controller
@@ -15,6 +17,16 @@ use Cake\ORM\TableRegistry;
  */
 class SalesController extends AppController
 {
+    public $paginate = [
+        'limit' => 10
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
+
     /**
      * Index method
      *
@@ -27,7 +39,14 @@ class SalesController extends AppController
         ];
         $sales = $this->paginate($this->Sales);
         $this->set(compact('sales'));
+        /* $query = $this->Sales
+            ->find('search', ['search' => $this->request->getQuery()]);
+        var_dump($query);
+        $sales = $this->paginate($query); */
+
+        $this->set(compact('sales'));
     }
+
 
     /**
      * View method
@@ -120,7 +139,7 @@ class SalesController extends AppController
 
         //保存
         $sale = $this->request->getData();
-        Log::write('debug', $sale);
+        //Log::write('debug', $sale);
         $sale = $this->Sales->newEntity();
         //debug($sale);
         if ($this->request->isPost()) {
@@ -139,5 +158,42 @@ class SalesController extends AppController
         $this->set(compact('sale'));
 
         // return $this->redirect(['controller' => 'Sales', 'action' => 'index']);
+    }
+
+    public function search()
+    {
+        if ($this->request->isPost()) {
+            $date = $this->request->getData();
+            //$this->log($date, 'debug');
+            $start = $date['start'];
+            $end = $date['end'];
+
+            $sales = $this->Sales->find()
+                ->where([
+                    'order_date_at >=' => $start,
+                    'order_date_at <=' => $end,
+                ])
+                ->all();
+            $this->log($sales, 'debug');
+            $this->set(compact('sales'));
+        }
+    }
+
+    public function find()
+    {
+        if ($this->request->is('get')) {
+            //$start = $this->request->getQuery('start');
+            //$end = $this->request->getQuery('end');
+            //var_dump($start);
+            $query = $this->Sales->find()
+                ->where(function ($exp) {
+                    return $exp->between('order_date_at', $this->request->getQuery('start'), $this->request->getQuery('end'));
+                })
+                //->toArray()
+            ;
+            //var_dump($query);
+            $sales = $this->paginate($query);
+            $this->set(compact('sales'));
+        }
     }
 }
