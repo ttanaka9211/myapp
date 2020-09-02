@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -37,7 +38,6 @@ class Sale extends Entity
         'product_id' => true,
         'product_name' => true,
         'product_price' => true,
-        'quantity' => true,
         'order_date_at' => true,
         'created' => true,
         'modified' => true,

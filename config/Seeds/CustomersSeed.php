@@ -25,10 +25,10 @@ class CustomersSeed extends AbstractSeed
 
         for ($i = 0; $i < 100; $i++) {
             $data[] = [
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName,
-                'telephone_number' => $faker->phoneNumber,
-                'mailaddress' => $faker->email,
+                'first_name' => $faker->unique->firstName,
+                'last_name' => $faker->unique->lastName,
+                'telephone_number' => $faker->unique->phoneNumber,
+                'mailaddress' => $faker->unique->email,
                 'created' => $datetime,
                 'modified' => $datetime
             ];

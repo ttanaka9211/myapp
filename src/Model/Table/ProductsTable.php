@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -9,11 +10,6 @@ use Cake\Validation\Validator;
 /**
  * Products Model
  *
-<<<<<<< HEAD
- * @property \App\Model\Table\SalesTable&\Cake\ORM\Association\HasMany $Sales
- *
-=======
->>>>>>> feature/add-product
  * @method \App\Model\Entity\Product get($primaryKey, $options = [])
  * @method \App\Model\Entity\Product newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Product[] newEntities(array $data, array $options = [])
@@ -42,13 +38,6 @@ class ProductsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-<<<<<<< HEAD
-
-        $this->hasMany('Sales', [
-            'foreignKey' => 'product_id',
-        ]);
-=======
->>>>>>> feature/add-product
     }
 
     /**

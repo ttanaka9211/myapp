@@ -17,7 +17,7 @@ use Cake\ORM\TableRegistry;
 class CustomersController extends AppController
 {
     public $paginate = [
-        'limit' => 1
+        'limit' => 50
     ];
     public function initialize()
     {
@@ -177,7 +177,7 @@ class CustomersController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    /* public function edit($id = null)
+    public function edit($id = null)
     {
         $customer = $this->Customers->get($id, [
             'contain' => [],
@@ -192,7 +192,7 @@ class CustomersController extends AppController
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $this->set(compact('customer'));
-    } */
+    }
 
     /**
      * Delete method
@@ -201,7 +201,7 @@ class CustomersController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    /*  public function delete($id = null)
+    public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $customer = $this->Customers->get($id);
@@ -212,5 +212,5 @@ class CustomersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    } */
+    }
 }
