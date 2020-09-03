@@ -109,9 +109,9 @@ class SalesTable extends Table
             ->notEmptyString('product_price');
 
         $validator
-            ->dateTime('order_date_at')
+            ->date('order_date_at')
             ->requirePresence('order_date_at', 'create')
-            ->notEmptyDateTime('order_date_at');
+            ->notEmptyDate('order_date_at');
 
         return $validator;
     }
