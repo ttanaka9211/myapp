@@ -10,11 +10,6 @@ use Cake\Validation\Validator;
 /**
  * Products Model
  *
-<<<<<<< HEAD
- * @property \App\Model\Table\SalesTable&\Cake\ORM\Association\HasMany $Sales
- *
-=======
->>>>>>> feature/add-product
  * @method \App\Model\Entity\Product get($primaryKey, $options = [])
  * @method \App\Model\Entity\Product newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Product[] newEntities(array $data, array $options = [])

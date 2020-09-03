@@ -4,9 +4,6 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Log\Log;
-use Cake\ORM\TableRegistry;
-use Cake\Utility\Hash;
-use Cake\I18n\Date;
 
 /**
  * Sales Controller

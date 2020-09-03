@@ -108,7 +108,6 @@ class SalesTable extends Table
             ->requirePresence('product_price', 'create')
             ->notEmptyString('product_price');
 
-
         $validator
             ->dateTime('order_date_at')
             ->requirePresence('order_date_at', 'create')

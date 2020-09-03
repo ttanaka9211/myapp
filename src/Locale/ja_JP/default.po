@@ -1,0 +1,874 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2020-09-02 12:03+0900\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/CustomersController.php:92
+#: Controller/SalesController.php:146
+msgid "The customer has been saved."
+msgstr "保存完了"
+
+#: Controller/CustomersController.php:96
+#: Controller/SalesController.php:153
+msgid "The customer could not be saved. Please, try again."
+msgstr "保存出来ませんでした。もう一度入力してください。"
+
+#: Controller/RequestsController.php:70
+msgid "The request has been saved."
+msgstr "保存完了"
+
+#: Controller/RequestsController.php:74
+msgid "The request could not be saved. Please, try again."
+msgstr "保存されませんでした。もう一度入力してください。"
+
+#: Controller/SalesController.php:75
+#: Controller/SalesController.php:101
+msgid "The sale has been saved."
+msgstr "保存完了"
+
+#: Controller/SalesController.php:79
+#: Controller/SalesController.php:105
+msgid "The sale could not be saved. Please, try again."
+msgstr "保存されませんでした。もう一度入力してください。"
+
+#: Controller/SalesController.php:124
+msgid "The sale has been deleted."
+msgstr "削除完了"
+
+#: Controller/SalesController.php:126
+msgid "The sale could not be deleted. Please, try again."
+msgstr "削除されませんでした。もう一度入力してください。"
+
+#: Controller/UsersController.php:38
+msgid "Invalid username or password, try again"
+msgstr "ユーザー名、もしくはパスワードが間違っています。再度入力してください。"
+
+#: Controller/UsersController.php:86
+#: Controller/UsersController.php:110
+msgid "The user has been saved."
+msgstr "保存完了"
+
+#: Controller/UsersController.php:90
+#: Controller/UsersController.php:114
+msgid "The user could not be saved. Please, try again."
+msgstr "保存されませんでした。もう一度入力してください。"
+
+#: Controller/UsersController.php:131
+msgid "The user has been deleted."
+msgstr "削除完了"
+
+#: Controller/UsersController.php:133
+msgid "The user could not be deleted. Please, try again."
+msgstr "削除されませんでした。もう一度入力してください。"
+
+#: Template/Customers/add.ctp:9
+#: Template/Customers/find.ctp:28
+#: Template/Customers/index.ctp:10
+#: Template/Customers/index.ctp:41
+#: Template/Customers/order.ctp:10
+#: Template/Customers/view.ctp:9
+#: Template/Products/add.ctp:9
+#: Template/Products/edit.ctp:9
+#: Template/Products/index.ctp:9
+#: Template/Products/index.ctp:28
+#: Template/Products/product.ctp:10
+#: Template/Products/view.ctp:9
+#: Template/Products/view.ctp:61
+#: Template/Requests/add.ctp:9
+#: Template/Requests/index.ctp:9
+#: Template/Requests/index.ctp:24
+#: Template/Requests/view.ctp:10
+#: Template/Sales/add.ctp:10
+#: Template/Sales/edit.ctp:9
+#: Template/Sales/find.ctp:10
+#: Template/Sales/find.ctp:30
+#: Template/Sales/index.ctp:10
+#: Template/Sales/index.ctp:63
+#: Template/Sales/sale.ctp:10
+#: Template/Sales/search.ctp:10
+#: Template/Sales/view.ctp:9
+#: Template/Users/add.ctp:9
+#: Template/Users/edit.ctp:9
+#: Template/Users/index.ctp:10
+#: Template/Users/index.ctp:28
+#: Template/Users/view.ctp:10
+msgid "Actions"
+msgstr ""
+
+#: Template/Customers/add.ctp:10
+#: Template/Customers/order.ctp:11
+#: Template/Customers/view.ctp:12
+#: Template/Products/product.ctp:11
+#: Template/Requests/add.ctp:11
+#: Template/Requests/index.ctp:11
+#: Template/Requests/view.ctp:15
+#: Template/Sales/add.ctp:12
+#: Template/Sales/edit.ctp:17
+#: Template/Sales/find.ctp:12
+#: Template/Sales/index.ctp:12
+#: Template/Sales/sale.ctp:11
+#: Template/Sales/search.ctp:12
+#: Template/Sales/view.ctp:14
+msgid "List Customers"
+msgstr "顧客一覧"
+
+#: Template/Customers/add.ctp:16
+#: Template/Customers/order.ctp:20
+#: Template/Products/product.ctp:17
+#: Template/Sales/sale.ctp:17
+msgid "Add Customer"
+msgstr "顧客追加"
+
+#: Template/Customers/add.ctp:24
+#: Template/Customers/order.ctp:32
+#: Template/Products/add.ctp:27
+#: Template/Products/edit.ctp:33
+#: Template/Products/product.ctp:26
+#: Template/Requests/add.ctp:23
+#: Template/Sales/edit.ctp:37
+#: Template/Sales/sale.ctp:38
+#: Template/Users/add.ctp:24
+#: Template/Users/edit.ctp:30
+#: View/Helper/FormHelper.php:2036
+msgid "Submit"
+msgstr "送信"
+
+#: Template/Customers/find.ctp:14
+#: Template/Customers/index.ctp:30
+msgid "Customers"
+msgstr "顧客情報"
+
+#: Template/Customers/find.ctp:42
+#: Template/Customers/index.ctp:55
+#: Template/Products/index.ctp:40
+#: Template/Products/view.ctp:76
+#: Template/Requests/index.ctp:35
+#: Template/Sales/find.ctp:44
+#: Template/Sales/index.ctp:80
+#: Template/Users/index.ctp:42
+#: View/Helper/PaginatorHelper.php:1271
+msgid "View"
+msgstr "詳細情報"
+
+#: Template/Customers/find.ctp:43
+#: Template/Customers/index.ctp:56
+#: Template/Products/index.ctp:41
+#: Template/Products/view.ctp:77
+#: Template/Requests/index.ctp:36
+#: Template/Sales/find.ctp:45
+#: Template/Sales/index.ctp:81
+#: Template/Users/index.ctp:43
+msgid "Edit"
+msgstr "編集"
+
+#: Template/Customers/find.ctp:44
+#: Template/Customers/index.ctp:57
+msgid "Order"
+msgstr "売り上げ登録"
+
+#: Template/Customers/find.ctp:45
+#: Template/Customers/index.ctp:58
+#: Template/Products/edit.ctp:11
+#: Template/Products/index.ctp:42
+#: Template/Products/view.ctp:78
+#: Template/Requests/index.ctp:37
+#: Template/Sales/edit.ctp:11
+#: Template/Sales/find.ctp:46
+#: Template/Sales/index.ctp:82
+#: Template/Users/edit.ctp:11
+#: Template/Users/index.ctp:44
+msgid "Delete"
+msgstr "削除"
+
+#: Template/Customers/find.ctp:45
+#: Template/Customers/index.ctp:58
+#: Template/Customers/view.ctp:11
+#: Template/Products/edit.ctp:13
+#: Template/Products/index.ctp:42
+#: Template/Products/view.ctp:11
+#: Template/Products/view.ctp:78
+#: Template/Requests/index.ctp:37
+#: Template/Requests/view.ctp:12
+#: Template/Sales/edit.ctp:13
+#: Template/Sales/find.ctp:46
+#: Template/Sales/index.ctp:82
+#: Template/Sales/view.ctp:11
+#: Template/Users/edit.ctp:13
+#: Template/Users/index.ctp:44
+#: Template/Users/view.ctp:12
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Customers/find.ctp:53
+#: Template/Customers/index.ctp:66
+#: Template/Products/index.ctp:50
+#: Template/Requests/index.ctp:45
+#: Template/Sales/find.ctp:54
+#: Template/Sales/index.ctp:90
+#: Template/Users/index.ctp:52
+msgid "first"
+msgstr "最初"
+
+#: Template/Customers/find.ctp:54
+#: Template/Customers/index.ctp:67
+#: Template/Products/index.ctp:51
+#: Template/Requests/index.ctp:46
+#: Template/Sales/find.ctp:55
+#: Template/Sales/index.ctp:91
+#: Template/Users/index.ctp:53
+msgid "previous"
+msgstr "前へ"
+
+#: Template/Customers/find.ctp:56
+#: Template/Customers/index.ctp:69
+#: Template/Products/index.ctp:53
+#: Template/Requests/index.ctp:48
+#: Template/Sales/find.ctp:57
+#: Template/Sales/index.ctp:93
+#: Template/Users/index.ctp:55
+msgid "next"
+msgstr "次へ"
+
+#: Template/Customers/find.ctp:57
+#: Template/Customers/index.ctp:70
+#: Template/Products/index.ctp:54
+#: Template/Requests/index.ctp:49
+#: Template/Sales/find.ctp:58
+#: Template/Sales/index.ctp:94
+#: Template/Users/index.ctp:56
+msgid "last"
+msgstr "最後へ"
+
+#: Template/Customers/find.ctp:59
+#: Template/Customers/index.ctp:72
+#: Template/Products/index.ctp:56
+#: Template/Requests/index.ctp:51
+#: Template/Sales/find.ctp:60
+#: Template/Sales/index.ctp:96
+#: Template/Users/index.ctp:58
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr ""
+
+#: Template/Customers/index.ctp:11
+#: Template/Customers/view.ctp:13
+#: Template/Requests/add.ctp:12
+#: Template/Requests/index.ctp:12
+#: Template/Requests/view.ctp:16
+#: Template/Sales/add.ctp:13
+#: Template/Sales/edit.ctp:18
+#: Template/Sales/find.ctp:13
+#: Template/Sales/index.ctp:13
+#: Template/Sales/search.ctp:13
+#: Template/Sales/view.ctp:15
+msgid "New Customer"
+msgstr "顧客登録"
+
+#: Template/Customers/view.ctp:10
+msgid "Edit Customer"
+msgstr "顧客情報編集"
+
+#: Template/Customers/view.ctp:11
+msgid "Delete Customer"
+msgstr "削除"
+
+#: Template/Customers/view.ctp:20
+msgid "First Name"
+msgstr "名前"
+
+#: Template/Customers/view.ctp:24
+msgid "Last Name"
+msgstr "苗字"
+
+#: Template/Customers/view.ctp:28
+msgid "Telephone Number"
+msgstr "電話番号"
+
+#: Template/Customers/view.ctp:32
+msgid "Mailaddress"
+msgstr "メールアドレス"
+
+#: Template/Customers/view.ctp:36
+#: Template/Products/view.ctp:29
+#: Template/Products/view.ctp:51
+#: Template/Requests/view.ctp:27
+#: Template/Sales/view.ctp:40
+#: Template/Users/view.ctp:37
+msgid "Id"
+msgstr ""
+
+#: Template/Customers/view.ctp:40
+#: Template/Products/view.ctp:37
+#: Template/Products/view.ctp:59
+#: Template/Requests/view.ctp:31
+#: Template/Sales/view.ctp:56
+#: Template/Users/view.ctp:41
+msgid "Created"
+msgstr "作成日時"
+
+#: Template/Customers/view.ctp:44
+#: Template/Products/view.ctp:41
+#: Template/Products/view.ctp:60
+#: Template/Requests/view.ctp:35
+#: Template/Sales/view.ctp:60
+#: Template/Users/view.ctp:45
+msgid "Modified"
+msgstr "更新日時"
+
+#: Template/Layout/error.ctp:36
+#: Template/Error/error400.ctp:36
+#: Template/Error/error500.ctp:41
+msgid "Error"
+msgstr "エラー"
+
+#: Template/Layout/error.ctp:44
+msgid "Back"
+msgstr "戻る"
+
+#: Template/Products/add.ctp:10
+#: Template/Products/edit.ctp:16
+#: Template/Products/view.ctp:12
+#: Template/Sales/add.ctp:14
+#: Template/Sales/edit.ctp:19
+#: Template/Sales/find.ctp:14
+#: Template/Sales/index.ctp:14
+#: Template/Sales/search.ctp:14
+#: Template/Sales/view.ctp:16
+msgid "List Products"
+msgstr "商品一覧"
+
+#: Template/Products/add.ctp:12
+#: Template/Products/edit.ctp:18
+#: Template/Products/index.ctp:12
+#: Template/Products/view.ctp:15
+#: Template/Sales/add.ctp:11
+#: Template/Sales/edit.ctp:16
+#: Template/Sales/find.ctp:11
+#: Template/Sales/view.ctp:12
+msgid "List Sales"
+msgstr "売り上げ一覧"
+
+#: Template/Products/add.ctp:13
+#: Template/Products/edit.ctp:19
+#: Template/Products/index.ctp:13
+#: Template/Products/view.ctp:16
+#: Template/Sales/index.ctp:11
+#: Template/Sales/search.ctp:11
+#: Template/Sales/view.ctp:13
+msgid "New Sale"
+msgstr "売り上げ登録"
+
+#: Template/Products/add.ctp:21
+msgid "Add Product"
+msgstr "商品情報登録登録"
+
+#: Template/Products/edit.ctp:27
+#: Template/Products/view.ctp:10
+msgid "Edit Product"
+msgstr ""
+
+#: Template/Products/index.ctp:10
+#: Template/Products/view.ctp:13
+#: Template/Sales/add.ctp:15
+#: Template/Sales/edit.ctp:20
+#: Template/Sales/find.ctp:15
+#: Template/Sales/index.ctp:15
+#: Template/Sales/search.ctp:15
+#: Template/Sales/view.ctp:17
+msgid "New Product"
+msgstr "新規登録"
+
+#: Template/Products/index.ctp:19
+msgid "Products"
+msgstr "商品名"
+
+#: Template/Products/view.ctp:11
+msgid "Delete Product"
+msgstr "削除"
+
+#: Template/Products/view.ctp:25
+msgid "Name"
+msgstr "商品名"
+
+#: Template/Products/view.ctp:33
+msgid "Price"
+msgstr "価格"
+
+#: Template/Products/view.ctp:47
+msgid "Related Sales"
+msgstr ""
+
+#: Template/Products/view.ctp:52
+msgid "Customer Id"
+msgstr "顧客ID"
+
+#: Template/Products/view.ctp:53
+#: Template/Sales/view.ctp:28
+msgid "Customer Name"
+msgstr "顧客名"
+
+#: Template/Products/view.ctp:54
+msgid "Product Id"
+msgstr "商品ID"
+
+#: Template/Products/view.ctp:55
+#: Template/Sales/view.ctp:36
+msgid "Product Name"
+msgstr "商品名"
+
+#: Template/Products/view.ctp:56
+#: Template/Sales/view.ctp:44
+msgid "Product Price"
+msgstr "価格"
+
+#: Template/Products/view.ctp:57
+#: Template/Sales/view.ctp:48
+msgid "Quantity"
+msgstr "数量"
+
+#: Template/Products/view.ctp:58
+#: Template/Sales/view.ctp:52
+msgid "Order Date At"
+msgstr "受注日"
+
+#: Template/Requests/add.ctp:10
+#: Template/Requests/view.ctp:13
+msgid "List Requests"
+msgstr ""
+
+#: Template/Requests/add.ctp:18
+msgid "Add Request"
+msgstr ""
+
+#: Template/Requests/index.ctp:10
+#: Template/Requests/view.ctp:14
+msgid "New Request"
+msgstr ""
+
+#: Template/Requests/index.ctp:16
+msgid "Requests"
+msgstr ""
+
+#: Template/Requests/view.ctp:11
+msgid "Edit Request"
+msgstr ""
+
+#: Template/Requests/view.ctp:12
+msgid "Delete Request"
+msgstr ""
+
+#: Template/Requests/view.ctp:23
+#: Template/Sales/view.ctp:24
+msgid "Customer"
+msgstr ""
+
+#: Template/Sales/add.ctp:21
+msgid "Add Sale"
+msgstr "売り上げ編集"
+
+#: Template/Sales/edit.ctp:26
+#: Template/Sales/view.ctp:10
+msgid "Edit Sale"
+msgstr ""
+
+#: Template/Sales/find.ctp:19
+#: Template/Sales/index.ctp:49
+msgid "Sales"
+msgstr ""
+
+#: Template/Sales/index.ctp:29
+msgid "start"
+msgstr "開始日"
+
+#: Template/Sales/index.ctp:38
+#: Template/Sales/search.ctp:36
+msgid "end"
+msgstr "終了日"
+
+#: Template/Sales/index.ctp:44
+#: Template/Sales/search.ctp:37
+msgid "Search"
+msgstr "検索"
+
+#: Template/Sales/search.ctp:23
+msgid "customer_name"
+msgstr "顧客名"
+
+#: Template/Sales/view.ctp:11
+msgid "Delete Sale"
+msgstr "削除"
+
+#: Template/Sales/view.ctp:32
+msgid "Product"
+msgstr "商品情報"
+
+#: Template/Users/add.ctp:10
+#: Template/Users/edit.ctp:16
+#: Template/Users/view.ctp:13
+msgid "List Users"
+msgstr "社員一覧"
+
+#: Template/Users/add.ctp:16
+msgid "Add User"
+msgstr "社員登録"
+
+#: Template/Users/edit.ctp:22
+#: Template/Users/view.ctp:11
+msgid "Edit User"
+msgstr "社員情報編集"
+
+#: Template/Users/index.ctp:11
+#: Template/Users/view.ctp:14
+msgid "New User"
+msgstr "社員登録"
+
+#: Template/Users/index.ctp:12
+msgid "Customers View"
+msgstr "顧客情報一覧"
+
+#: Template/Users/index.ctp:13
+msgid "New request"
+msgstr ""
+
+#: Template/Users/index.ctp:17
+msgid "Users"
+msgstr "社員情報"
+
+#: Template/Users/login.ctp:11
+msgid "Please enter your email and password"
+msgstr "メールアドレス、パスワードを入力して下さい。"
+
+#: Template/Users/login.ctp:15
+msgid "Login"
+msgstr "ログイン"
+
+#: Template/Users/view.ctp:12
+msgid "Delete User"
+msgstr "削除"
+
+#: Template/Users/view.ctp:21
+msgid "Username"
+msgstr "ユーザー名"
+
+#: Template/Users/view.ctp:25
+msgid "Email"
+msgstr "メールアドレス"
+
+#: Template/Users/view.ctp:29
+msgid "Password"
+msgstr "パスワード"
+
+#: Template/Users/view.ctp:33
+msgid "Role"
+msgstr "権限"
+
+#: Template/Error/error400.ctp:37
+msgid "The requested address {0} was not found on this server."
+msgstr ""
+
+#: Template/Error/error500.ctp:39
+msgid "An Internal Error Has Occurred"
+msgstr ""
+
+#: Controller/Component/AuthComponent.php:502
+msgid "You are not authorized to access that location."
+msgstr ""
+
+#: Controller/Component/CsrfComponent.php:181
+#: Http/Middleware/CsrfProtectionMiddleware.php:228
+msgid "Missing CSRF token cookie"
+msgstr ""
+
+#: Controller/Component/CsrfComponent.php:185
+#: Http/Middleware/CsrfProtectionMiddleware.php:232
+msgid "CSRF token mismatch."
+msgstr ""
+
+#: Error/ExceptionRenderer.php:301
+msgid "Not Found"
+msgstr ""
+
+#: Error/ExceptionRenderer.php:303
+msgid "An Internal Error Has Occurred."
+msgstr ""
+
+#: Http/Response.php:2677
+msgid "The requested file contains `..` and will not be read."
+msgstr ""
+
+#: Http/Response.php:2698
+msgid "The requested file was not found"
+msgstr ""
+
+#: I18n/Number.php:106
+msgid "{0,number,#,###.##} KB"
+msgstr ""
+
+#: I18n/Number.php:108
+msgid "{0,number,#,###.##} MB"
+msgstr ""
+
+#: I18n/Number.php:110
+msgid "{0,number,#,###.##} GB"
+msgstr ""
+
+#: I18n/Number.php:112
+msgid "{0,number,#,###.##} TB"
+msgstr ""
+
+#: I18n/Number.php:104
+msgid "{0,number,integer} Byte"
+msgid_plural "{0,number,integer} Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} from now"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:83
+msgid "{0} after"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:83
+msgid "{0} before"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:114
+msgid "just now"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:151
+msgid "about a second ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:152
+msgid "about a minute ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:153
+msgid "about an hour ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:154
+#: I18n/RelativeTimeFormatter.php:332
+msgid "about a day ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:155
+#: I18n/RelativeTimeFormatter.php:333
+msgid "about a week ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:156
+#: I18n/RelativeTimeFormatter.php:334
+msgid "about a month ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:157
+#: I18n/RelativeTimeFormatter.php:335
+msgid "about a year ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:168
+msgid "in about a second"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:169
+msgid "in about a minute"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:170
+msgid "in about an hour"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:171
+#: I18n/RelativeTimeFormatter.php:346
+msgid "in about a day"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:172
+#: I18n/RelativeTimeFormatter.php:347
+msgid "in about a week"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:173
+#: I18n/RelativeTimeFormatter.php:348
+msgid "in about a month"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:174
+#: I18n/RelativeTimeFormatter.php:349
+msgid "in about a year"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:304
+msgid "today"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:370
+msgid "%s ago"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:371
+msgid "on %s"
+msgstr ""
+
+#: I18n/RelativeTimeFormatter.php:47
+#: I18n/RelativeTimeFormatter.php:126
+#: I18n/RelativeTimeFormatter.php:316
+msgid "{0} year"
+msgid_plural "{0} years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:51
+#: I18n/RelativeTimeFormatter.php:129
+#: I18n/RelativeTimeFormatter.php:319
+msgid "{0} month"
+msgid_plural "{0} months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:57
+#: I18n/RelativeTimeFormatter.php:132
+#: I18n/RelativeTimeFormatter.php:322
+msgid "{0} week"
+msgid_plural "{0} weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:59
+#: I18n/RelativeTimeFormatter.php:135
+#: I18n/RelativeTimeFormatter.php:325
+msgid "{0} day"
+msgid_plural "{0} days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:64
+#: I18n/RelativeTimeFormatter.php:138
+msgid "{0} hour"
+msgid_plural "{0} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:68
+#: I18n/RelativeTimeFormatter.php:141
+msgid "{0} minute"
+msgid_plural "{0} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: I18n/RelativeTimeFormatter.php:72
+#: I18n/RelativeTimeFormatter.php:144
+msgid "{0} second"
+msgid_plural "{0} seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ORM/RulesChecker.php:56
+msgid "This value is already in use"
+msgstr ""
+
+#: ORM/RulesChecker.php:103
+msgid "This value does not exist"
+msgstr ""
+
+#: ORM/RulesChecker.php:127
+msgid "The count does not match {0}{1}"
+msgstr ""
+
+#: Utility/Text.php:933
+msgid "and"
+msgstr ""
+
+#: Validation/Validator.php:2510
+#: View/Form/ArrayContext.php:226
+msgid "This field is required"
+msgstr ""
+
+#: Validation/Validator.php:2532
+msgid "This field cannot be left empty"
+msgstr ""
+
+#: Validation/Validator.php:2691
+msgid "The provided value is invalid"
+msgstr ""
+
+#: View/Helper/FormHelper.php:1114
+msgid "Edit {0}"
+msgstr ""
+
+#: View/Helper/FormHelper.php:1116
+msgid "New {0}"
+msgstr ""
+
+#: View/Helper/HtmlHelper.php:831
+msgid "Home"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:539
+msgid "January"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:540
+msgid "February"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:541
+msgid "March"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:542
+msgid "April"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:543
+msgid "May"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:544
+msgid "June"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:545
+msgid "July"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:546
+msgid "August"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:547
+msgid "September"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:548
+msgid "October"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:549
+msgid "November"
+msgstr ""
+
+#: View/Widget/DateTimeWidget.php:550
+msgid "December"
+msgstr ""
+
+msgid "Find Customers"
+msgstr "顧客検索"
