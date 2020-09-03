@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
@@ -12,13 +13,10 @@
                 ['action' => 'delete', $product->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]
             )
-        ?></li>
+            ?></li>
         <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?></li>
-<<<<<<< HEAD
         <li><?= $this->Html->link(__('List Sales'), ['controller' => 'Sales', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Sale'), ['controller' => 'Sales', 'action' => 'add']) ?></li>
-=======
->>>>>>> feature/add-product
     </ul>
 </nav>
 <div class="products form large-9 medium-8 columns content">
@@ -26,8 +24,8 @@
     <fieldset>
         <legend><?= __('Edit Product') ?></legend>
         <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('price');
+        echo $this->Form->control('name');
+        echo $this->Form->control('price');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

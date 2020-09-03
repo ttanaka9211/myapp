@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $products
@@ -8,11 +9,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?></li>
-<<<<<<< HEAD
         <li><?= $this->Html->link(__('List Sales'), ['controller' => 'Sales', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Sale'), ['controller' => 'Sales', 'action' => 'add']) ?></li>
-=======
->>>>>>> feature/add-product
     </ul>
 </nav>
 <div class="products index large-9 medium-8 columns content">
@@ -29,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($products as $product): ?>
+            <?php foreach ($products as $product) : ?>
             <tr>
                 <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= h($product->name) ?></td>

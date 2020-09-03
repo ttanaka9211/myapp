@@ -16,7 +16,7 @@
     </ul>
 </nav>
 <div class="customers find large-9 medium-8 columns content">
-    <h3>Find customer</h3>
+    <h3>売り上げ検索</h3>
     <?php echo $this->Form->create(
         'Sales',
         ['url' => ['action' => 'find'], 'type' => 'get']
@@ -46,17 +46,14 @@
     ?>
     </fieldset>
     <div class="sales index large-9 medium-8 columns content">
-        <h3><?= __('Sales') ?></h3>
+        <h3>売り上げ一覧</h3>
         <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
                     <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('customer_id') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('customer_name') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('product_id') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('product_name') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('product_price') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('quantity') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('order_date_at') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
@@ -67,12 +64,9 @@
                 <?php foreach ($sales as $sale) : ?>
                 <tr>
                     <td><?= $this->Number->format($sale->id) ?></td>
-                    <td><?= $sale->has('customer') ? $this->Html->link($sale->customer->id, ['controller' => 'Customers', 'action' => 'view', $sale->customer->id]) : '' ?></td>
                     <td><?= h($sale->customer_name) ?></td>
-                    <td><?= $sale->has('product') ? $this->Html->link($sale->product->name, ['controller' => 'Products', 'action' => 'view', $sale->product->id]) : '' ?></td>
                     <td><?= h($sale->product_name) ?></td>
                     <td><?= $this->Number->format($sale->product_price) ?></td>
-                    <td><?= $this->Number->format($sale->quantity) ?></td>
                     <td><?= h($sale->order_date_at) ?></td>
                     <td><?= h($sale->created) ?></td>
                     <td><?= h($sale->modified) ?></td>
