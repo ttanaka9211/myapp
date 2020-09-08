@@ -2,7 +2,7 @@
 
 use Migrations\AbstractMigration;
 
-class RemoveQuantityFromSales extends AbstractMigration
+class RemoveDeleteFlagFromProducts extends AbstractMigration
 {
     /**
      * Change Method.
@@ -13,17 +13,18 @@ class RemoveQuantityFromSales extends AbstractMigration
      */
     public function up()
     {
-        $table = $this->table('sales');
-        $table->removeColumn('quantity');
+        $table = $this->table('products');
+        $table->removeColumn('delete_flag');
         $table->update();
     }
+
     public function down()
     {
-        $table = $this->table('sales');
-        $table->addColumn('quantity', 'integer', [
-            'default' => null,
-            'after' => 'product_price',
-            'limit' => 3,
+        $table = $this->table('products');
+        $table->addColumn('delete_flag', 'integer', [
+            'default' => 0,
+            'limit' => 1,
+            'after' => 'price',
             'null' => false,
         ]);
         $table->update();
