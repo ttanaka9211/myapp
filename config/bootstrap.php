@@ -203,3 +203,5 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+Configure::write('Users.config', ['users']);
+\App\Application::addPlugin('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
