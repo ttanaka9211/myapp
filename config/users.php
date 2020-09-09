@@ -160,13 +160,14 @@ $config = [
         ],
         'loginRedirect' => [ // ログイン後
             'plugin' => null,
-            'controller' => 'Users',
+            'controller' => 'Customers',
             'action' => 'index',
         ],
         'logoutRedirect' => [ // ログアウト後
-            'plugin' => null,
-            'controller' => 'Pages', // トップページにリダイレクトする例
-            'action' => 'display', 'home',
+            'plugin' => 'CakeDC/Users',
+            'controller' => 'Users', // トップページにリダイレクトする例
+            'action' => 'login',
+            'Prefix' => false
         ]
     ],
     'OAuth' => [
