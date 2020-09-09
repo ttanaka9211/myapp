@@ -51,6 +51,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </ul>
         </div>
     </nav>
+    <nav class="large-3 medium-4 columns" id="actions-sidebar">
+        <ul class="side-nav">
+            <li class="heading"><?= __('Customers') ?></li>
+            <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?></li>
+        </ul>
+        <ul class="side-nav">
+            <li class="heading"><?= __('Product') ?></li>
+            <li><?= $this->Html->link(__('List Products'), ['controller' => 'Products', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('商品登録'), ['controller' => 'Products', 'action' => 'add']) ?></li>
+        </ul>
+        <ul class="side-nav">
+            <li class="heading"><?= __('売り上げ情報') ?></li>
+            <li><?= $this->Html->link(__('List Sales'), ['controller' => 'Sales', 'action' => 'index']) ?></li>
+        </ul>
+    </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>

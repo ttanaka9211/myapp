@@ -284,11 +284,11 @@ msgstr "削除"
 
 #: Template/Customers/view.ctp:20
 msgid "First Name"
-msgstr "名前"
+msgstr "氏名（名）"
 
 #: Template/Customers/view.ctp:24
 msgid "Last Name"
-msgstr "苗字"
+msgstr "氏名（姓）"
 
 #: Template/Customers/view.ctp:28
 msgid "Telephone Number"
