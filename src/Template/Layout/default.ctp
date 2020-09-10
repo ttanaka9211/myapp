@@ -60,7 +60,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <ul class="side-nav">
             <li class="heading"><?= __('Product') ?></li>
             <li><?= $this->Html->link(__('List Products'), ['controller' => 'Products', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('商品登録'), ['controller' => 'Products', 'action' => 'add']) ?></li>
+            <li><?= $this->AuthLink->link(__('商品登録'), ['controller' => 'Products', 'action' => 'add']) ?></li>
         </ul>
         <ul class="side-nav">
             <li class="heading"><?= __('売り上げ情報') ?></li>
