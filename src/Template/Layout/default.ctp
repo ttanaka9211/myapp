@@ -66,6 +66,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <li class="heading"><?= __('売り上げ情報') ?></li>
             <li><?= $this->Html->link(__('List Sales'), ['controller' => 'Sales', 'action' => 'index']) ?></li>
         </ul>
+        <ul class="side-nav">
+            <li>
+            <li><?= $this->AuthLink->link(__d('CakeDC/Users', 'List Users'), ['controller' => 'users', 'action' => 'index']) ?></li>
+            </li>
+        </ul>
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
