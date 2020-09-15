@@ -2,10 +2,13 @@
 
 namespace App\Model\Table;
 
+use Cake\Database\Expression\IdentifierExpression;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use DateTimeInterface;
+use PhpParser\Node\Identifier;
 
 /**
  * Sales Model
@@ -129,5 +132,46 @@ class SalesTable extends Table
         $rules->add($rules->existsIn(['product_id'], 'Products'));
 
         return $rules;
+    }
+
+    /**
+     * 2つの日付間の月の、月初の日付を配列にして返す。
+     *
+     * @param DateTimeInterface $from
+     * @param DateTimeInterface $to
+     */
+    public function getTargetMonths(DateTimeInterface $from, DateTimeInterface $to)
+    {
+        $r = [];
+        for ($m = $from; $m->format('Y-m-01') <= $to->format('Y-m-01'); $m->DateTime::modify("1+1 months")) {
+            $r[] = $m;
+        }
+    }
+
+    /**
+     * クロス集計するカスタムファインダー
+     *
+     * @param Query $query
+     * @param array $options
+     * @return Query
+     */
+    public function findCrossAggregate(Query $query, array $options)
+    {
+        $select = [
+            'Sales.customer_name'
+        ];
+
+        $months = $options['months'];
+        foreach ($months as $m) {
+            $q = $this->find();
+            $case = $q->newExpr()->addCase(
+                [
+                    $q->newExpr()->between('Sales.order_date_at', $m->format('Y-m-01'), $m->format('Y-m-t')),
+                ],
+                [new IdentifierExpression('Sales.product_price'), 0],
+                ['integer', 'integer']
+            );
+            $select[$m->format('Y/m')] = $q->func()->sum($case);
+        }
     }
 }
