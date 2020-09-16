@@ -4,11 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "cae2b3d2c469d092b0b367a418169220",
-=======
+
     "content-hash": "2c5849575ed0744d05896e711ac6cdd2",
->>>>>>> feature/Rbac
     "packages": [
         {
             "name": "aura/intl",
