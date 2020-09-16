@@ -2,34 +2,34 @@
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Sales Model
+ * Sales Model.
  *
  * @property \App\Model\Table\CustomersTable&\Cake\ORM\Association\BelongsTo $Customers
- * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsTo $Products
+ * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsTo  $Products
  *
- * @method \App\Model\Entity\Sale get($primaryKey, $options = [])
- * @method \App\Model\Entity\Sale newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Sale[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Sale       get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Sale       newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Sale[]     newEntities(array $data, array $options = [])
  * @method \App\Model\Entity\Sale|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Sale saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Sale patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Sale[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Sale findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Sale       saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Sale       patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Sale[]     patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Sale       findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class SalesTable extends Table
 {
     /**
-     * Initialize method
+     * Initialize method.
      *
-     * @param array $config The configuration for the Table.
+     * @param array $config the configuration for the Table
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -52,7 +52,7 @@ class SalesTable extends Table
         ]);
 
         // ビヘイビア（friendsofcake/search）の追加
-        $this->addBehavior("Search.Search");
+        $this->addBehavior('Search.Search');
 
         //検索条件の追加
         $this->searchManager()
@@ -61,6 +61,7 @@ class SalesTable extends Table
                     if (empty($args['end'])) {
                         return;
                     }
+
                     return $query->where(function ($exp) use ($args) {
                         return $exp->between(
                             'Sales.order_date_at',
@@ -68,11 +69,11 @@ class SalesTable extends Table
                             $args['end']
                         );
                     });
-                }
+                },
             ])
             ->callback('end', [
                 'callback' => function ($query, $args, $filter) {
-                }
+                },
             ]);
         // ->like('customer_name', ['before' => true, 'after' => true]);
         //->compare('order_date_at', ['operator' => '>=']);
@@ -82,7 +83,8 @@ class SalesTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @param \Cake\Validation\Validator $validator validator instance
+     *
      * @return \Cake\Validation\Validator
      */
     public function validationDefault(Validator $validator)
@@ -120,7 +122,8 @@ class SalesTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @param \Cake\ORM\RulesChecker $rules the rules object to be modified
+     *
      * @return \Cake\ORM\RulesChecker
      */
     public function buildRules(RulesChecker $rules)
