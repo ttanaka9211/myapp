@@ -42,11 +42,11 @@ class CustomersController extends AppController
         $this->set(compact('productsAll', 'productsVaild'));
     }
 
-    public function isAuthorized($user)
+    /*  public function isAuthorized($user)
     {
         return true;
     }
-
+ */
 
     /**
      * Index method

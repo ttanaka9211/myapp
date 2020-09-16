@@ -38,8 +38,7 @@ class AppView extends View
      */
     public function initialize()
     {
-        /* $this->Form->setTemplates([
-            'dateWidget' => '<input type="date" name="{{name}}" value="{{value}}">'
-        ]); */
+        parent::initialize();
+        $this->loadHelper('CakeDC/Users.User');
     }
 }

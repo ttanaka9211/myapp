@@ -1,23 +1,10 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Product'), ['action' => 'edit', $product->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Product'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?> </li>
-<<<<<<< HEAD
-        <li><?= $this->Html->link(__('List Sales'), ['controller' => 'Sales', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Sale'), ['controller' => 'Sales', 'action' => 'add']) ?> </li>
-=======
->>>>>>> feature/add-product
-    </ul>
-</nav>
 <div class="products view large-9 medium-8 columns content">
     <h3><?= h($product->name) ?></h3>
     <table class="vertical-table">
@@ -42,10 +29,9 @@
             <td><?= h($product->modified) ?></td>
         </tr>
     </table>
-<<<<<<< HEAD
     <div class="related">
         <h4><?= __('Related Sales') ?></h4>
-        <?php if (!empty($product->sales)): ?>
+        <?php if (!empty($product->sales)) : ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
@@ -60,7 +46,7 @@
                 <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($product->sales as $sales): ?>
+            <?php foreach ($product->sales as $sales) : ?>
             <tr>
                 <td><?= h($sales->id) ?></td>
                 <td><?= h($sales->customer_id) ?></td>
@@ -82,6 +68,4 @@
         </table>
         <?php endif; ?>
     </div>
-=======
->>>>>>> feature/add-product
 </div>
