@@ -2,6 +2,7 @@
 
 namespace App\Model\Table;
 
+use Cake\Database\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -132,5 +133,9 @@ class SalesTable extends Table
         $rules->add($rules->existsIn(['product_id'], 'Products'));
 
         return $rules;
+    }
+
+    public function findMonthRanking(Query $query, array $options = [])
+    {
     }
 }

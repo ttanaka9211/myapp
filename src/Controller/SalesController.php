@@ -2,11 +2,10 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use Cake\Log\Log;
 
 /**
- * Sales Controller
+ * Sales Controller.
  *
  * @property \App\Model\Table\SalesTable $Sales
  *
@@ -15,7 +14,7 @@ use Cake\Log\Log;
 class SalesController extends AppController
 {
     public $paginate = [
-        'limit' => 10
+        'limit' => 10,
     ];
 
     public function initialize()
@@ -25,7 +24,7 @@ class SalesController extends AppController
     }
 
     /**
-     * Index method
+     * Index method.
      *
      * @return \Cake\Http\Response|null
      */
@@ -44,13 +43,14 @@ class SalesController extends AppController
         $this->set(compact('sales'));
     }
 
-
     /**
-     * View method
+     * View method.
      *
-     * @param string|null $id Sale id.
+     * @param string|null $id sale id
+     *
      * @return \Cake\Http\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     *
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException when record not found
      */
     public function view($id = null)
     {
@@ -62,9 +62,9 @@ class SalesController extends AppController
     }
 
     /**
-     * Add method
+     * Add method.
      *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null redirects on successful add, renders view otherwise
      */
     public function add()
     {
@@ -84,11 +84,13 @@ class SalesController extends AppController
     }
 
     /**
-     * Edit method
+     * Edit method.
      *
-     * @param string|null $id Sale id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * @param string|null $id sale id
+     *
+     * @return \Cake\Http\Response|null redirects on successful edit, renders view otherwise
+     *
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException when record not found
      */
     public function edit($id = null)
     {
@@ -110,11 +112,13 @@ class SalesController extends AppController
     }
 
     /**
-     * Delete method
+     * Delete method.
      *
-     * @param string|null $id Sale id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     * @param string|null $id sale id
+     *
+     * @return \Cake\Http\Response|null redirects to index
+     *
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException when record not found
      */
     public function delete($id = null)
     {
@@ -128,6 +132,7 @@ class SalesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
     public function sale()
     {
         //データ確認
@@ -142,7 +147,6 @@ class SalesController extends AppController
         if ($this->request->isPost()) {
             $sale = $this->Sales->patchEntity($sale, $this->request->getData());
             if ($this->Sales->save($sale)) {
-
                 $this->Flash->success(__('The customer has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -192,5 +196,23 @@ class SalesController extends AppController
             $sales = $this->paginate($query);
             $this->set(compact('sales'));
         }
+    }
+
+    public function ranking()
+    {
+        $users = $this->Sales->find();
+
+        $date_format = $users->func()->date_format([
+        'order_date_at' => 'identifier',
+        '"%Y/%m"' => 'identifier',
+      ]);
+        $users
+      ->select([
+        'oder_month' => $date_format,
+        'price_total' => $users->func()->sum('product_price'),
+      ])
+      ->group('oder_month')
+      ->toArray();
+        var_dump($users);
     }
 }
