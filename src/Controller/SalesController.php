@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Cake\Log\Log;
+use DateTimeImmutable;
 
 /**
  * Sales Controller.
@@ -214,5 +215,20 @@ class SalesController extends AppController
       ->group('oder_month')
       ->toArray();
         var_dump($users);
+    }
+
+    public function chooseMonths()
+    {
+    }
+
+    public function aggregate()
+    {
+        $form = new DateTimeImmutable($this->request->getQuery('form'));
+        $to = new DateTimeImmutable($this->request->getQuery('to'));
+        $months = $this->Sales->getTargetMonths($form, $to);
+
+        $aggregatedAccounts = $this->Sales->find('crossAggregate', ['months' => $months])->toList();
+        $this->set('accounts', $aggregatedAccounts);
+        $this->set('months', $months);
     }
 }
