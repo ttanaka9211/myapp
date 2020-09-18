@@ -14,10 +14,6 @@ use DateTimeImmutable;
  */
 class SalesController extends AppController
 {
-    public $paginate = [
-        'limit' => 10,
-    ];
-
     public function initialize()
     {
         parent::initialize();
@@ -223,12 +219,16 @@ class SalesController extends AppController
 
     public function aggregate()
     {
-        $form = new DateTimeImmutable($this->request->getQuery('form'));
+        /* if (isset($this->request->getQuery())) { */
+        $form = new DateTimeImmutable($this->request->getQuery('from'));
         $to = new DateTimeImmutable($this->request->getQuery('to'));
         $months = $this->Sales->getTargetMonths($form, $to);
+        var_dump($form);
+        var_dump($to);
 
         $aggregatedAccounts = $this->Sales->find('crossAggregate', ['months' => $months])->toList();
         $this->set('accounts', $aggregatedAccounts);
         $this->set('months', $months);
     }
 }
+//}

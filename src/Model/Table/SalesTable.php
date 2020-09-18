@@ -162,7 +162,7 @@ class SalesTable extends Table
     public function findCrossAggregate(Query $query, array $options): Query
     {
         $select = [
-        'product_name',
+        'product_id',
       ];
 
         $months = $options['months'];
@@ -180,6 +180,7 @@ class SalesTable extends Table
 
         return $query
         ->select($select)
-        ->group('product_name');
+        ->group('product_id')
+        ;
     }
 }
