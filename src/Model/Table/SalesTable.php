@@ -162,9 +162,9 @@ class SalesTable extends Table
     public function findCrossAggregate(Query $query, array $options): Query
     {
         $select = [
-        'product_id',
+         ' product_name',
       ];
-
+        /** @var DateTimeInterface[] $months */
         $months = $options['months'];
         foreach ($months as $m) {
             $q = $this->find();
@@ -177,10 +177,11 @@ class SalesTable extends Table
         );
             $select[$m->format('Y/m')] = $q->func()->sum($case);
         }
+        //$this->log($select, 'debug');
 
         return $query
         ->select($select)
-        ->group('product_id')
+        ->group('product_name')
         ;
     }
 }

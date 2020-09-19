@@ -219,16 +219,21 @@ class SalesController extends AppController
 
     public function aggregate()
     {
-        /* if (isset($this->request->getQuery())) { */
-        $form = new DateTimeImmutable($this->request->getQuery('from'));
-        $to = new DateTimeImmutable($this->request->getQuery('to'));
-        $months = $this->Sales->getTargetMonths($form, $to);
-        var_dump($form);
-        var_dump($to);
+        if ($this->request->is('get')) {
+            $form = new DateTimeImmutable($this->request->getQuery('from'));
+            $to = new DateTimeImmutable($this->request->getQuery('to'));
+            $months = $this->Sales->getTargetMonths($form, $to);
 
-        $aggregatedAccounts = $this->Sales->find('crossAggregate', ['months' => $months])->toList();
-        $this->set('accounts', $aggregatedAccounts);
-        $this->set('months', $months);
+            $aggregatedAccounts = $this->Sales->find(
+              'crossAggregate',
+             ['months' => $months]
+             )
+              ->toArray();
+            $this->set('accounts', $aggregatedAccounts);
+            $this->set('months', $months);
+            // $this->set('months', 'aggregatedAccounts');
+            $this->log($aggregatedAccounts, 'debug');
+            $this->log($months, 'debug');
+        }
     }
 }
-//}
