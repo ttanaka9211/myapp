@@ -141,7 +141,6 @@ class SalesTable extends Table
     /**
      * 2つの日付間の月の、月初の日付を入れにして返す。
      *
-     * @param date $from
      *@param date $to
      *
      *@return DatetimeInterface[]
@@ -162,7 +161,7 @@ class SalesTable extends Table
     public function findCrossAggregate(Query $query, array $options): Query
     {
         $select = [
-         ' product_name',
+         'product_name',
       ];
         /** @var DateTimeInterface[] $months */
         $months = $options['months'];

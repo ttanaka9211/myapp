@@ -229,6 +229,7 @@ class SalesController extends AppController
             ['months' => $months]
             )
             ->toArray();
+            var_dump($aggregatedAccounts);
             $this->set('accounts', $aggregatedAccounts);
             $this->set('months', $months);
             // $this->set('months', 'aggregatedAccounts');
