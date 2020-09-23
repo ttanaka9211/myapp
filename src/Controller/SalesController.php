@@ -225,10 +225,10 @@ class SalesController extends AppController
             $months = $this->Sales->getTargetMonths($form, $to);
 
             $aggregatedAccounts = $this->Sales->find(
-              'crossAggregate',
-             ['months' => $months]
-             )
-              ->toArray();
+            'crossAggregate',
+            ['months' => $months]
+            )
+            ->toArray();
             $this->set('accounts', $aggregatedAccounts);
             $this->set('months', $months);
             // $this->set('months', 'aggregatedAccounts');
