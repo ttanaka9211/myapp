@@ -26,6 +26,16 @@ class SalesControllerTest extends TestCase
     ];
 
     /**
+     * Test initialize method
+     *
+     * @return void
+     */
+    public function testInitialize()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test index method
      *
      * @return void
@@ -71,6 +81,66 @@ class SalesControllerTest extends TestCase
      * @return void
      */
     public function testDelete()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test sale method
+     *
+     * @return void
+     */
+    public function testSale()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test search method
+     *
+     * @return void
+     */
+    public function testSearch()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test find method
+     *
+     * @return void
+     */
+    public function testFind()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test ranking method
+     *
+     * @return void
+     */
+    public function testRanking()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test chooseMonths method
+     *
+     * @return void
+     */
+    public function testChooseMonths()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test aggregate method
+     *
+     * @return void
+     */
+    public function testAggregate()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
