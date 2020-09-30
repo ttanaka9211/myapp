@@ -142,6 +142,7 @@ class SalesTable extends Table
      * 2つの日付間の月の、月初の日付を入れにして返す。
      *
      *@param date $to
+     *@param date $from
      *
      *@return DatetimeInterface[]
      */
