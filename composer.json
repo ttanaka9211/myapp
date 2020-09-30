@@ -21,7 +21,7 @@
         "cakephp/cakephp-codesniffer": "^3.0",
         "heroku/heroku-buildpack-php": "^178.0",
         "josegonzalez/dotenv": "3.*",
-        "phpunit/phpunit": "8.4",
+        "phpunit/phpunit": "*",
         "psy/psysh": "@stable"
     },
     "suggest": {
