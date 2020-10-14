@@ -2,8 +2,6 @@
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -38,6 +36,16 @@ class CustomersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Search.Search');
+        //検索条件
+        $this->searchManager()
+            ->like('last_name', [
+                'before' => true,
+                'after' => true
+            ])
+            ->like('telephone_number', [
+                'after' => true
+            ]);
     }
 
     /**

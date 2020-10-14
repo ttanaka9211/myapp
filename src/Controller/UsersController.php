@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Log\Log;
+use Cake\ORM\TableRegistry;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Users Controller
@@ -14,32 +17,6 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
-    public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['add', 'logout']);
-    }
-
-    public function isAuthorized($user)
-    {
-        return true;
-    }
-
-    public function login()
-    {
-        if ($this->request->is('post')) {
-            $user = $this->Auth->identify();
-            if ($user) {
-                $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            $this->Flash->error(__('Invalid username or password, try again'));
-        }
-    }
-
-    public function logout()
-    {
-        return $this->redirect($this->Auth->logout());
-    }
 
     /**
      * Index method
@@ -131,5 +108,70 @@ class UsersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function export()
+    {
+        $header = array("出席番号", "名前", "身長");
+        $datas = array(
+            array(1, "山田太郎", 167), array(2, "鈴木花子", 158), array(3, "高橋健太", 174)
+        );
+
+        $temp_dir = sys_get_temp_dir();
+        //$this->log($temp_dir, 'debug');
+        $temp_csv_file_path = tempnam($temp_dir, 'temp_csv');
+        //$this->log($temp_csv_file_path);
+        $fp = fopen($temp_csv_file_path, 'w');
+        fputcsv($fp, $header);
+
+        foreach ($datas as $data) {
+            $row = array(
+                $data[0], $data[2], $data[3], $data[4]
+            );
+            fputcsv($fp, $data);
+        }
+        fclose($fp);
+        $this->log($fp, 'debug');
+        $this->response = $this->response->withType('csv');
+        return $this->response->withFile(
+            $temp_csv_file_path,
+            [
+                'download' => true,
+                'name' => 'hoge.csv'
+            ]
+        );
+    }
+    public function outputCsv()
+    {
+        // CSVの出力先（tmp/csv）を作成する
+        $base_dir = TMP . 'csv' . DS;
+        if (!file_exists($base_dir)) {
+            mkdir($base_dir, 0777, true);
+        }
+
+        // CSV出力をするテーブルのリストを取得する
+        $tables = ConnectionManager::get('default')->getSchemaCollection()
+            ->listTables();
+        while (($index = array_search("phinxlog", $tables, true)) !== false) {
+            // phinxlogはCSVに出力しない
+            unset($tables[$index]);
+        }
+
+        // テーブルのリスト分データを取得し、CSVファイルに出力する
+        foreach ($tables as $table) {
+            $data = TableRegistry::get($table)->find()
+                ->toArray();
+            $fp = fopen("{$base_dir}{$table}.csv", 'w');
+            foreach ($data as $key => $row) {
+                $output_data = $row->toArray();
+                $this->log($output_data, 'debug');
+                if ($key === 0) {
+                    // 取得したデータのキーからヘッダーを作成する
+                    fputcsv($fp, array_keys($output_data));
+                }
+                fputcsv($fp, $output_data, ",", '"');
+            }
+            fclose($fp);
+        }
     }
 }

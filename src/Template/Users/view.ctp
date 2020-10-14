@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
@@ -45,4 +46,7 @@
             <td><?= h($user->modified) ?></td>
         </tr>
     </table>
+    <a href="<?= $this->Url->build('/users/export') ?>" class="btn btn-success">
+        <span class="glyphicon glyphicon-download" aria-hidden="true">CSV出力</span>
+    </a>
 </div>

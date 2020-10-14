@@ -81,8 +81,6 @@ try {
  * Load an environment local configuration file to provide overrides to your configuration.
  * Notice: For security reasons app_local.php will not be included in your git repo.
  */
-//    Configure::load('app_local', 'default');
-//}
 if (file_exists(CONFIG . 'app_local.php') && env('CAKE_ENV') !== 'heroku') {
     Configure::load('app_local', 'default');
 }
@@ -205,3 +203,5 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+Configure::write('Users.config', ['users']);
+\App\Application::addPlugin('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
